@@ -47,6 +47,10 @@
 		<p class="copyright">
 		  Copyright &copy; Addy Osmani 2015.
 		</p>
+		<p>번역자 : deadintegral@gmail.com</p>
+		<p>*번역자는 영알못입니다. js에 대한 이해가 부족하여 오역이 있을 수 있습니다. 오탈자 및 잘못 번역된 부분 지적 환영합니다.</p>
+		<p>*번역은 언제든 미뤄질 수 있습니다. (3월 14일~ 크롬 웹 어셈블리 패치 후 약2주간 중단)</p>
+		<p>2017.03.08 ~</p>
 		<p class="copyright"><em>Learning JavaScript Design Patterns</em> is released under a <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/">Creative Commons Attribution-Noncommercial-No Derivative Works 3.0</a> unported license. It is available for purchase via <a href="http://shop.oreilly.com/product/0636920025832.do">O'Reilly</a> Media but will remain available for both free online and as a physical (or eBook) purchase for readers wishing to support the project.</p>
 
 		<p><img src="./files/cover.jpg" width="300px" alt="Book cover for Learning JavaScript Design Patterns"></p>
@@ -2604,14 +2608,18 @@ A real-world analogy could be a typical airport traffic control system. A tower 
 <p>과거에 저는 종종 이러한 형태의 객체를 "workflow" 객체 라고 불렀지만, 사실 이것이 mediator 입니다. mediator는 많은 다른 객체들 사이의 워크플로우를 처리하고, 워크플로우 지식의 책임을 하나의 객체로 모으는 객체입니다. 그 결과 워크플로우를 이해하고 유지하기가 더 쉽습니다.</p>
 
 <h5>Similarities And Differences</h5>
+<h5>유사점과 차이점</h5>
 
 <p>There are, without a doubt, similarities between the event aggregator and mediator examples that I’ve shown here. The similarities boil down to two primary items: events and third-party objects. These differences are superficial at best, though. When we dig into the intent of the pattern and see that the implementations can be dramatically different, the nature of the patterns become more apparent.</p>
+<p>의심의 여지없이, 여기에 제시한 event aggregator와 mediator 예제 사이에는 유사점이 있습니다. 유사점은 events 와 third-party objects 의 두 가지 기본 항목으로 요약됩니다. 이러한 차이점은 기껏해야 피상적입니다. 우리가 패턴의 의도를 파고들고 패턴의 구현이 크게 다를 수 있다는걸 알게되면, 패턴의 본질이 더욱 분명해질 겁니다.</p>
 
 <h6>Events</h6>
 
 <p>Both the event aggregator and mediator use events, in the above examples. An event aggregator obviously deals with events – it’s in the name after all. The mediator only uses events because it makes life easy when dealing with modern JavaScript webapp frameworks. There is nothing that says a mediator must be built with events. You can build a mediator with callback methods, by handing the mediator reference to the child object, or by any of a number of other means.</p>
+<p>위의 예제에서 event aggregator 와 mediator 둘다 events를 사용합니다. event aggregator 는 분명히 events를 처리 합니다 - 결국 이름에 포함됩니다. mediator는 최신 JavaScript 웹앱 프레임워크를 처리할 때 처리할 때 편리하기 때문에, 오직 events만 사용합니다. mediator가 반드시 events를 사용해야 한다고 말하지는 않습니다. mediator reference 를 자식 객체에 넘겨 주거나, 다른 여러 가지 방법 중 하나를 사용하여, 콜백 메서드로 mediator를 만들수도 있습니다.</p>
 
 <p>The difference, then, is why these two patterns are both using events. The event aggregator, as a pattern, is designed to deal with events. The mediator, though, only uses them because it’s convenient.</p>
+<p>차이점은 이 두 패턴이 이벤트를 사용하는 이유 입니다. event aggregator는 패턴으로 events를 처리하도록 설계되었습니다. mediator는 오직 편리하기 때문에 events를 사용합니다.</p>
 
 <h6>Third-Party Objects</h6>
 
