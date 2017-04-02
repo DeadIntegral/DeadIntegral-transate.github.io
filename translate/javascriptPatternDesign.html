@@ -2624,6 +2624,7 @@ A real-world analogy could be a typical airport traffic control system. A tower 
 <h6>Third-Party Objects</h6>
 
 <p>Both the event aggregator and mediator, by design, use a third-party object to facilitate things. The event aggregator itself is a third-party to the event publisher and the event subscriber. It acts as a central hub for events to pass through. The mediator is also a third party to other objects, though. So where is the difference? Why don’t we call an event aggregator a mediator? The answer largely comes down to where the application logic and workflow is coded.</p>
+<p>event aggregator 와 mediator 둘 모두 third-party object를 사용해서 작업을 용이하게 하도록 설계되었습니다. event aggregator 자체는 event publisher와 event subscriber의 third-party 입니다. events가 전달되는 중앙 허브 역할을 합니다. 하지만 mediator 역시 다른 객체의 third party 이기도 합니다. 어떤 차이가 있을까요? 왜 우리는 event aggregator를 mediator라고 부를 수 없을까요? 그 대답은 주로 어플리케이션 로직과 워크플로우가 코딩되는 위치에 있습니다.</p>
 
 <p>In the case of an event aggregator, the third party object is there only to facilitate the pass-through of events from an unknown number of sources to an unknown number of handlers. All workflow and business logic that needs to be kicked off is put directly into the object that triggers the events and the objects that handle the events.</p>
 
