@@ -2627,24 +2627,35 @@ A real-world analogy could be a typical airport traffic control system. A tower 
 <p>event aggregator 와 mediator 둘 모두 third-party object를 사용해서 작업을 용이하게 하도록 설계되었습니다. event aggregator 자체는 event publisher와 event subscriber의 third-party 입니다. events가 전달되는 중앙 허브 역할을 합니다. 하지만 mediator 역시 다른 객체의 third party 이기도 합니다. 어떤 차이가 있을까요? 왜 우리는 event aggregator를 mediator라고 부를 수 없을까요? 그 대답은 주로 어플리케이션 로직과 워크플로우가 코딩되는 위치에 있습니다.</p>
 
 <p>In the case of an event aggregator, the third party object is there only to facilitate the pass-through of events from an unknown number of sources to an unknown number of handlers. All workflow and business logic that needs to be kicked off is put directly into the object that triggers the events and the objects that handle the events.</p>
+<p>event aggregator의 경우, third party object는 (숫자를)알 수 없는 소스들의 events를 (숫자를)알 수 없는 핸들러들로 전달하는 것을 용이하게 하기 위해서만 존재합니다. 전달해야(kicked off) 할 필요가 있는 모든 워크플로우와 비즈니스 로직은, events를 발생(trigger)시키는 객체와 events를 처리(handle)하는 객체에 직접 입력합니다.</p>
+<p>*역자주 : kicked off 는 이벤트 데이터를 빼내는 것을 말합니다.<br> ex) $('id').on('click', function(e){var event = e;})</p>
 
 <p>In the case of the mediator, though, the business logic and workflow is aggregated into the mediator itself. The mediator decides when an object should have its methods called and attributes updated based on factors that the mediator knows about. It encapsulates the workflow and process, coordinating multiple objects to produce the desired system behaviour. The individual objects involved in this workflow each know how to perform their own task. But it’s the mediator that tells the objects when to perform the tasks by making decisions at a higher level than the individual objects.</p>
+<p>하지만 mediator의 경우, 비즈니스 로직과 워크플로우는 mediator 자체에 통합됩니다. mediator는 객체가 호출되어야 하는 메소드를 결정하고, mediator가 알고있는 factors를 기반으로 업데이트 된 attributes를 결정합니다. mediator는 워크플로우와 프로세스를 캡슐화하여, 여러 객체들을 통합해 원하는 시스템 동작을 생성합니다. 워크플로우에 관련된 개별 객체들은 각각 자신의 작업을 수행하는 방법을 알고 있습니다. 그러나 객체를 개별 객체보다 높은 수준에서 결정함으로써, 작업을 수행 할 시기를 알려주는 것은 mediator입니다.</p>
 
 <p>An event aggregator facilitates a "fire and forget" model of communication. The object triggering the event doesn’t care if there are any subscribers. It just fires the event and moves on. A mediator, though, might use events to make decisions, but it is definitely not "fire and forget". A mediator pays attention to a known set of input or activities so that it can facilitate and coordinate additional behavior with a known set of actors (objects).</p>
+<p>event aggregator는 소통의 "fire and forget" 모델을 용이하게 합니다. 이벤트를 발생시키는 객체는 subscribers가 있는지 상관하지 않습니다. event aggregator는 이벤트를 시작하고 계속 움직입니다. 하지만 mediator는 events를 사용하여 결정을 내릴 수는 있지만, 명확한 "fire and forget" 는 아닙니다. mediator는 알려진 액터(객체) 집합과 함께 추가적인 동작을 용이하게 하고 조정할 수 있도록, 알려진 입력했거나 활동중인 알려진 집합에 주의를 기울입니다.</p>
+
+<p>*역자주 : fire and forget : (유도 기능이 있는) 미사일 발사 후 잊어도 알아서 잘한다는 말입니다. 여기서는 이벤트를 발동시킨 후 해당 이벤트를 더이상 핸들링 하지 않아도 된다는 뜻으로 사용됩니다. UDP 통신 방식을 생각하셔도 될 듯 합니다.</p>
 
 <h5>Relationships: When To Use Which</h5>
 
 <p>Understanding the similarities and differences between an event aggregator and mediator is important for semantic reasons. It’s equally as important to understand when to use which pattern, though. The basic semantics and intent of the patterns does inform the question of when, but actual experience in using the patterns will help you understand the more subtle points and nuanced decisions that have to be made.</p>
+<p>의미론적 이유로 event aggregator와 mediator 간의 유사점과 차이점을 이해하는 것이 중요합니다. 그와 동시에 어떤 패턴을 사용해야 하는지 이해하는 것도 중요합니다. 패턴의 기본 의미와 의도는 어느시점에서의 문제인지를 알려 줍니다. 그러나 패턴의 실제 사용 경험은 미묘한 점과 뉘앙스의 결정을 이해하는데 도움이 됩니다.</p>
 
 <h6>Event Aggregator Use</h6>
 
 <p>In general, an event aggregator is used when you either have too many objects to listen to directly, or you have objects that are entirely unrelated.</p>
+<p>일반적으로 event aggregator는 너무 많은 객체를 직접 등록했거나, 완전히 관련없는 오브젝트를 가지고 있을 때 사용합니다.</p>
 
 <p>When two objects have a direct relationship already – say, a parent view and child view – then there might be little benefit in using an event aggregator. Have the child view trigger an event and the parent view can handle the event. In JavaScript framework terms, this is most commonly seen in Backbone’s Collection and Model, where all Model events are bubbled up to and through its parent Collection. A Collection often uses model events to modify the state of itself or other models. Handling "selected" items in a collection is a good example of this.</p>
+<p>두 객체가 이미 직접적인 관계를 맺었을 경우 - 말하자면 부모 뷰와 자식 뷰 - event aggregator를 사용할 때 이점이 거의 없을 수 있습니다. 자식 뷰에서 이벤트를 발생시키고 부모 뷰에서 이벤트를 처리하도록 합니다. JavaScript 프레임워크 측면에서 보았을 때, 이것은 대부분 일반적으로 백본의 Collection과 Model에서 볼 수 있습니다. 여기서 모든 Model events 는 parent Collection 까지 이어집니다(bubbled up : 상향식 파싱). Collection은 종종 model events를 사용하여, 다른 모델 또는 그 자체의 상태를 수정합니다. collection에서 "selected" 항목을 처리하는것은 좋은 예제입니다.</p>
 
 <p>jQuery’s on method as an event aggregator is a great example of too many objects to listen to. If you have 10, 20 or 200 DOM elements that can trigger a "click" event, it might be a bad idea to set up a listener on all of them individually. This could quickly deteriorate performance of the application and user experience. Instead, using jQuery’s on method allows us to aggregate all of the events and reduce the overhead of 10, 20, or 200 event handlers down to 1.</p>
+<p>event aggregator로서의 jQuery 메서드는 너무 많은 객체를 등록하는 좋은 예제 입니다. "click" 이벤트를 발생시키는 DOM elements가 10개, 20개, 200개일 경우 모든 elements에게 개별적으로 linster를 설정하는 것은 좋지 않습니다. 이것은 UX와 응용프로그램의 성능이 급격히 저하 할 수 있습니다. 대신 jQuery의 on 메서드를 사용한다면, 모든 events가 모이고(aggregate), 10, 20, 200개에 달하는 event handlers의 오버헤드를 1까지 감소시킬 수 있습니다.</p>
 
 <p>Indirect relationships are also a great time to use event aggregators. In modern applications, it is very common to have multiple view objects that need to communicate, but have no direct relationship. For example, a menu system might have a view that handles the menu item clicks. But we don’t want the menu to be directly tied to the content views that show all of the details and information when a menu item is clicked. Having the content and menu coupled together would make the code very difficult to maintain, in the long run. Instead, we can use an event aggregator to trigger "menu:click:foo" events, and have a "foo" object handle the click event to show its content on the screen.</p>
+<p>간접적인 관계 역시 event aggregators를 사용하기에 좋습니다. 최근의 응용프로그램에서는 소통이 필요하지만, 직접적인 관계는 갖고 있지 않은 여러개의 뷰 객체를 갖는 것이 매우 일반적입니다. 예를들어, 메뉴 시스템은 메뉴 항목 클릭을 처리하는 뷰가 있을 수 있습니다. 그러나 우리는 메뉴 항목을 클릭할 때, 모든 세부적인것과 정보를 보여주는 컨텐트 뷰를, 메뉴에 직접 결합하고 싶지 않습니다. 장기적으로는, 컨텐트와 메뉴가 결합되면 코드를 유지보수 하기가 매우 어려워집니다. 대신 우리는 event aggregator를 사용해서 "menu:click:foo" events를 발생시키고, "foo" 객체가 클릭 이벤트를 처리해 내용을 화면에 표시하도록 할 수 있습니다.</p>
 
 <h6>Mediator Use</h6>
 
