@@ -2476,10 +2476,7 @@ Notice how in our sample below, one topic notification is made when a user indic
    // Subscribe to the new search tags topic
    $.subscribe( "/search/tags", function( e, tags ) {
        $( "#lastQuery" )
-                .html("
-Searched for:" + tags + "
-
-");
+                .html("Searched for:" + tags + "");
    });
 
    // Subscribe to the new results topic
@@ -2546,13 +2543,14 @@ The Observer pattern is useful for decoupling a number of different scenarios in
 <p>In the section on the Observer pattern, we were introduced to a way of channeling multiple event sources through a single object. This is also known as Publish/Subscribe or Event Aggregation. It's common for developers to think of Mediators when faced with this problem, so let's explore how they differ.</p>
 <p>Observer 패턴 섹션에서는, 하나의 객체를 통해 여러개의 이벤트 소스를 채널링하는 방법을 소개했습니다. 또한 이것은 Publish/Subscribe 또는 Event Aggregation 이라고도 알려졌습니다. 개발자가 이러한 문제에 직면했을 때, Mediator를 생각하는 것이 일반적이므로, 어떻게 다른지 살펴보겠습니다.</p>
 
-<p>
-The dictionary refers to a mediator as <i>a neutral party that assists in negotiations and conflict resolution</i>. In our world, a mediator is a behavioral design pattern that allows us to expose a unified interface through which the different parts of a system may communicate.</p>
+<p>The dictionary refers to a mediator as <i>a neutral party that assists in negotiations and conflict resolution</i>. In our world, a mediator is a behavioral design pattern that allows us to expose a unified interface through which the different parts of a system may communicate.</p>
+<p>dictionary는 <i>협상 및 갈등 해소에 도움이 되는 중재자로서</i> mediator를 지칭합니다. 우리 세계에서, mediator는 시스템의 다른 부분들이 통신할 수 있는 통일 된 인터페이스를 드러낼 수 있는 행동 패턴 이니다.</p>
 
 <p>If it appears a system has too many direct relationships between components, it may be time to have a central point of control that components communicate through instead. The Mediator promotes loose coupling by ensuring that instead of components referring to each other explicitly, their interaction is handled through this central point. This can help us decouple systems and improve the potential for component reusability.
 </p>
-<p>
-A real-world analogy could be a typical airport traffic control system. A tower (Mediator) handles what planes can take off and land because all communications (notifications being listened out for or broadcast) are done from the planes to the control tower, rather than from plane-to-plane. A centralized controller is key to the success of this system and that's really the role a Mediator plays in software design.</p>
+<p>시스템에 컴포넌트 간 직접적인 관계가 너무 많으면, 컴포넌트가 대신 통신할 수 있는 중앙 통제 지점을 가질 때가 있습니다. Mediator는 컴포넌트가 명시적으로 서로를 참조하지 않고, 그들의 상호작용이 중심점을 통해 처리되도록 보장하여 느슨한 결합을 촉진합니다. 이는 시스템을 분리하고, 컴포넌트의 재사용 가능성을 향상시키는데 도움이 될 수 있습니다.</p>
+
+<p>A real-world analogy could be a typical airport traffic control system. A tower (Mediator) handles what planes can take off and land because all communications (notifications being listened out for or broadcast) are done from the planes to the control tower, rather than from plane-to-plane. A centralized controller is key to the success of this system and that's really the role a Mediator plays in software design.</p>
 
 <p>Another analogy would be DOM event bubbling and event delegation. If all subscriptions in a system are made against the document rather than individual nodes, the document effectively serves as a Mediator. Instead of binding to the events of the individual nodes, a higher level object is given the responsibility of notifying subscribers about interaction events.</p>
 
@@ -2669,10 +2667,13 @@ A real-world analogy could be a typical airport traffic control system. A tower 
 <h5>Event Aggregator (Pub/Sub) And Mediator Together</h5>
 
 <p>The crux of the difference between an event aggregator and a mediator, and why these pattern names should not be interchanged with each other, is illustrated best by showing how they can be used together. The menu example for an event aggregator is the perfect place to introduce a mediator as well.</p>
+<p>event aggregator와 mediator의 차이의 핵심, 그리고 이들 패턴의 이름을 서로 교체하면 안되는 이유는, 그것들을 함께 사용하는 방법을 보여줌으로써 가장 잘 표현합니다. event aggregator의 메뉴 예제는 mediator를 도입하기에 완벽한 장소입니다.</p>
 
 <p>Clicking a menu item may trigger a series of changes throughout an application. Some of these changes will be independent of others, and using an event aggregator for this makes sense. Some of these changes may be internally related to each other, though, and may use a mediator to enact those changes.</p>
+<p>메뉴 항목을 클릭하면 응용 프로그램 전체에서 일련의 변경 사항이 트리거가 될 수 있습니다. 이러한 변경 사항 중 일부는 다른것과 독립적이며, event aggregator를 사용하는 것이 좋습니다. 이러한 변경 사항 중 일부는 내부적으로 관련되어 있을 수 있으며, 이러한 변경 사항을 적용하기 위해 mediator를 사용할 수 있습니다.</p>
 
 <p>A mediator, then, could be set up to listen to the event aggregator. It could run its logic and process to facilitate and coordinate many objects that are related to each other, but unrelated to the original event source.</p>
+<p>그러면 mediator가 event aggregator를 감지하도록 설정할 수 있습니다. 서로 연계되어 있지만, 원형의 이벤트 소스는 연계되어 있지 않은 많은 오브젝트를, 용이하게 하고 통합하기 위해서 로직과 프로세스를 실행할 수 있습니다.</p>
 
 <pre><code class="js">var MenuItem = MyFrameworkView.extend({
 
@@ -8861,7 +8862,6 @@ console.log("test", myApp);
 	<div class="footer">
 		<p>Learning JavaScript Design Patterns. &copy; Addy Osmani 2015.</p>
 
-		<script src="/KISS/js/jquery-2.1.4.min.js"></script>
 		<script src="./files/highlight.pack.js"></script>
 		<script>hljs.initHighlightingOnLoad();</script>
 	</body>
