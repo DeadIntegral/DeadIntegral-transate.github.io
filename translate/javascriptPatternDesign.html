@@ -1575,7 +1575,7 @@ myRevealingModule.start();
   The Singleton Pattern
 </h2>
 
-<p>*역자주 : js에서는 싱글톤 패턴이</p>
+<p>*역자주 : js에서는 싱글톤 패턴이 fix005</p>
 <p>The Singleton pattern is thus known because it restricts instantiation of a class to a single object. Classically, the Singleton pattern can be implemented by creating a class with a method that creates a new instance of the class if one doesn't exist. In the event of an instance already existing, it simply returns a reference to that object.</p>
 <p>Singleton pattern은 클래스의 인스턴스 생성을 하나의 객체로 제한하기 때문에 알 수 있습니다. 그러므로 Singleton pattern 은 '새 인스턴스를 생성하는 메서드를 가진 클래스'를 생성함으로써 구현될 수 있습니다. 인스턴스가 이미 존재하는 경우에는 해당 객체에 대한 참조만 반환합니다.</p>
 
@@ -2551,6 +2551,7 @@ The Observer pattern is useful for decoupling a number of different scenarios in
 <p>시스템에 컴포넌트 간 직접적인 관계가 너무 많으면, 컴포넌트가 대신 통신할 수 있는 중앙 통제 지점을 가질 때가 있습니다. Mediator는 컴포넌트가 명시적으로 서로를 참조하지 않고, 그들의 상호작용이 중심점을 통해 처리되도록 보장하여 느슨한 결합을 촉진합니다. 이는 시스템을 분리하고, 컴포넌트의 재사용 가능성을 향상시키는데 도움이 될 수 있습니다.</p>
 
 <p>A real-world analogy could be a typical airport traffic control system. A tower (Mediator) handles what planes can take off and land because all communications (notifications being listened out for or broadcast) are done from the planes to the control tower, rather than from plane-to-plane. A centralized controller is key to the success of this system and that's really the role a Mediator plays in software design.</p>
+<p>현실 세계의 전형적인 항공 교통 관제 시스템으로 비유할 수 있습니다.  fix006</p>
 
 <p>Another analogy would be DOM event bubbling and event delegation. If all subscriptions in a system are made against the document rather than individual nodes, the document effectively serves as a Mediator. Instead of binding to the events of the individual nodes, a higher level object is given the responsibility of notifying subscribers about interaction events.</p>
 
@@ -2704,6 +2705,7 @@ MyWorkflow.prototype.doStuff = function(){
 </code></pre>
 
 <p>In this example, when the MenuItem with the right model is clicked, the <code>"menu:click:foo"</code> event will be triggered. An instance of the "MyWorkflow" object, assuming one is already instantiated, will handle this specific event and will coordinate all of the objects that it knows about, to create the desired user experience and workflow.</p>
+<p>이 예제에서는 올바른 모델의 MenuItem을 클릭하면, <code>"menu:click:foo"</code> 이벤트가 발생합니다. "MyWorkflow" 객체의 인스턴스가 이미 인스턴스화 되었으면, 이 특정 이벤트를 처리하고 그것이 알고있는 모든 객체를 통합해, 원하는 사용자 경험과 워크플로를 만듭니다.</p>
 
 <p>An event aggregator and a mediator have been combined to create a much more meaningful experience in both the code and the application itself. We now have a clean separation between the menu and the workflow through an event aggregator and we are still keeping the workflow itself clean and maintainable through the use of a mediator.</p>
 
@@ -8862,6 +8864,7 @@ console.log("test", myApp);
 	<div class="footer">
 		<p>Learning JavaScript Design Patterns. &copy; Addy Osmani 2015.</p>
 
+		<script src="/KISS/js/jquery-2.1.4.min.js"></script>
 		<script src="./files/highlight.pack.js"></script>
 		<script>hljs.initHighlightingOnLoad();</script>
 	</body>
