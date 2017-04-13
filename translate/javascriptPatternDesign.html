@@ -2716,6 +2716,7 @@ MyWorkflow.prototype.doStuff = function(){
 </h3>
 
 <p>The largest benefit of the Mediator pattern is that it reduces the communication channels needed between objects or components in a system from many to many to just many to one. Adding new publishers and subscribers is relatively easy due to the level of decoupling present.</p>
+<p>Mediator 패턴의 가장 큰 장점은 시스템에서 오브젝트 또는 컴포넌트 사이에 필요한 통신 채널을 M:N 에서 N:1로 감소시키는 것입니다. 새로운 publishers와 subscribers를 추가하는 것은, 현재 디커플링 수준 때문에 상대적으로 쉽습니다.</p>
 
 <p>
 Perhaps the biggest downside of using the pattern is that it can introduce a single point of failure. Placing a Mediator between modules can also cause a performance hit as they are always communicating indirectly. Because of the nature of loose coupling, it's difficult to establish how a system might react by only looking at the broadcasts.</p>
@@ -8864,7 +8865,6 @@ console.log("test", myApp);
 	<div class="footer">
 		<p>Learning JavaScript Design Patterns. &copy; Addy Osmani 2015.</p>
 
-		<script src="/KISS/js/jquery-2.1.4.min.js"></script>
 		<script src="./files/highlight.pack.js"></script>
 		<script>hljs.initHighlightingOnLoad();</script>
 	</body>
