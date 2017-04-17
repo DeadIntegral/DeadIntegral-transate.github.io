@@ -17,11 +17,11 @@
 	<meta property="og:title" content="JS design pattern">
 	<meta property="og:description" content="Javascript Design Pattern 번역">
 
-	<link rel="stylesheet" href="files/style.css" >
-	<link rel="stylesheet" href="files/shCore.css">
-	<link rel="stylesheet" href="files/shThemeRDark.css">
-	<link rel="stylesheet" href="files/sausage.css">
-	<link rel="stylesheet" href="files/base.css">
+	<link rel="stylesheet" href="./files/style.css" >
+	<link rel="stylesheet" href="./files/shCore.css">
+	<link rel="stylesheet" href="./files/shThemeRDark.css">
+	<link rel="stylesheet" href="./files/sausage.css">
+	<link rel="stylesheet" href="./files/base.css">
 	<link rel="stylesheet" href="./files/railscasts.css">
 	<!-- endbuild -->
 </head>
@@ -2665,6 +2665,7 @@ The Observer pattern is useful for decoupling a number of different scenarios in
 <p>위의 "orgChart"와 같은 마법사 인터페이스가 좋은 예제입니다. 마법사의 전체 워크 플로를 용이하게 하는 여러개의 뷰가 있습니다. 각각을 직접 참조함으로써 뷰를 타이트하게 연결하는 대신, 우리는 그것들을 분리할 수 있습니다. 그리고 mediator를 도입함으로써 그것들 사이의 워크 플로를 보다 명확하게 모델링 할 수 있습니다.</p>
 
 <p>The mediator extracts the workflow from the implementation details and creates a more natural abstraction at a higher level, showing us at a much faster glance what that workflow is. We no longer have to dig into the details of each view in the workflow, to see what the workflow actually is.</p>
+<p>mediator는 구현 세부 사항으로부터 워크플로우를 추출하고, 더 높은 레벨에서의 보다 자연스러운 추상화를 생성하여, 워크플로우가 더 빨라 보이도록 합니다. 우리는 더 이상 워크플로우 내 각각의 뷰에 대한 세부 사항을 파헤쳐, 실제 워크 플로우가 무엇인지 확인할 필요가 없습니다.</p>
 
 <h5>Event Aggregator (Pub/Sub) And Mediator Together</h5>
 
@@ -2713,15 +2714,15 @@ MyWorkflow.prototype.doStuff = function(){
 
 <p>
 <h3 id="advantagesanddisadvantages">
-  <a href="#advantagesanddisadvantages" class="subhead-link">#</a>
-  Advantages &amp; Disadvantages
+	<a href="#advantagesanddisadvantages" class="subhead-link">#</a>
+	Advantages &amp; Disadvantages
 </h3>
 
 <p>The largest benefit of the Mediator pattern is that it reduces the communication channels needed between objects or components in a system from many to many to just many to one. Adding new publishers and subscribers is relatively easy due to the level of decoupling present.</p>
 <p>Mediator 패턴의 가장 큰 장점은 시스템에서 오브젝트 또는 컴포넌트 사이에 필요한 통신 채널을 M:N 에서 N:1로 감소시키는 것입니다. 새로운 publishers와 subscribers를 추가하는 것은, 현재 디커플링 수준 때문에 상대적으로 쉽습니다.</p>
 
-<p>
-Perhaps the biggest downside of using the pattern is that it can introduce a single point of failure. Placing a Mediator between modules can also cause a performance hit as they are always communicating indirectly. Because of the nature of loose coupling, it's difficult to establish how a system might react by only looking at the broadcasts.</p>
+<p>Perhaps the biggest downside of using the pattern is that it can introduce a single point of failure. Placing a Mediator between modules can also cause a performance hit as they are always communicating indirectly. Because of the nature of loose coupling, it's difficult to establish how a system might react by only looking at the broadcasts.</p>
+<p>아마도 이 패턴을 사용할 때의 가장 큰 단점은, 단일장애점(SPOF)일 것입니다. 모듈 사이에 Mediator를 배치하면 언제나 간접적으로 통신하기 때문에, 성능에 영향을 줄 수 있습니다. 느슨한 커플링의 특성 때문에, 브로드캐스트를 보는 것만으로 시스템이 어떻게 반응할지 확립하기가 어렵습니다.</p>
 
 <p>That said, it's useful to remind ourselves that decoupled systems have a number of other benefits - if our modules communicated with each other directly, changes to modules (e.g another module throwing an exception) could easily have a domino effect on the rest of our application. This problem is less of a concern with decoupled systems.</p>
 
