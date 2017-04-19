@@ -2756,8 +2756,10 @@ MyWorkflow.prototype.doStuff = function(){
 <p>Reviewing the definitions for this pattern in existing (non-JavaScript) literature, we <strong>may</strong> find references to classes once again. The reality is that prototypal inheritance avoids using classes altogether. There isn't a "definition" object nor a core object in theory. We're simply creating copies of existing functional objects.</p>
 
 <p>One of the benefits of using the prototype pattern is that we're working with the prototypal strengths JavaScript has to offer natively rather than attempting to imitate features of other languages. With other design patterns, this isn't always the case.</p>
+<p>prototype 패턴을 사용하면 얻을 수 있는 장점 중 하나는, 다른 언어의 기능을 모방하지 않고 JavaScript가 제공하는 프토토타입의 강점과 함께 작업한다는 것입니다. 다른 디자인 패턴의 경우, 항상 그렇지는 않습니다.</p>
 
 <p>Not only is the pattern an easy way to implement inheritance, but it can also come with a performance boost as well: when defining a function in an object, they're all created by reference (so all child objects point to the same function) instead of creating their own individual copies. </p>
+<p>패턴은 상속을 구현하는 쉬운 방법일 뿐만 아니라, 성능을 향상시킬 수 있습니다: 객체에서 함수를 정의할 때, 각각을 복사해서 만드는 대신 참조에 의해 만들어 집니다.(그래서 모든 자식 객체는 동일한 함수를 가리킵니다)</p>
 
 <p>For those interested, real prototypal inheritance, as defined in the ECMAScript 5 standard, requires the use of <code>Object.create</code> (which we previously looked at earlier in this section). To remind ourselves, <code>Object.create</code> creates an object which has a specified prototype and optionally contains specified properties as well (e.g <code>Object.create( prototype, optionalDescriptorObjects )</code>).</p>
 
