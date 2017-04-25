@@ -2813,10 +2813,13 @@ var car = Object.create(vehicle, {
 </code></pre>
 
 <p>Here the properties can be initialized on the second argument of <code>Object.create</code> using an object literal with a syntax similar to that used by the <code>Object.defineProperties</code> and <code>Object.defineProperty</code> methods that we looked at previously.</p>
+<p>이전에 살펴본 <code>Object.defineProperties</code> 와 <code>Object.defineProperty</code> 메서드에서 사용하는 것과 유사한 신택스와 객체 리터럴을 사용하여, <code>Object.create</code> 의 두 번재 argument 의 properties들을 초기화 할 수 있습니다.</p>
 
 <p>It is worth noting that prototypal relationships can cause trouble when enumerating properties of objects and (as Crockford recommends) wrapping the contents of the loop in a <code>hasOwnProperty()</code> check.</p>
+<p>prototypal 관계는 객체의 property들을 열거하고, (Crockford가 궈장하는 것처럼) <code>hasOwnProperty()</code> 검사 안에서 루프의 내용을 래핑할 때 문제가 생길 수 있다는 것에 주목해야 합니다.</p>
 
 <p>If we wish to implement the prototype pattern without directly using <code>Object.create</code>, we can simulate the pattern as per the above example as follows:</p>
+<p><code>Object.create</code>를 직접적으로 사용하지 않고 prototype 패턴을 구현하고 싶을 때, 우리는 다음과 같이 패턴을 위의 예제처럼 실험해볼 수 있습니다:</p>
 <p>&nbsp;</p>
 
 <pre><code class="js">var vehiclePrototype = {
@@ -2848,8 +2851,10 @@ car.getModel();
 </code></pre>
 
 <p><strong>Note:</strong> This alternative does not allow the user to define read-only properties in the same manner (as the vehiclePrototype may be altered if not careful).</p>
+<p><strong>Note:</strong> 이 대안은 사용자가 동일한 방법으로 읽기 전용 property를 정의하도록 허용하지 않습니다 (주의하지 않으면 vehiclePrototype이 변경 될 수 있습니다).</p>
 
 <p>A final alternative implementation of the Prototype pattern could be the following:</p>
+<p>Prototype 패턴의 최종 대안 구현은 다음과 같습니다:</p>
 
 <pre><code class="js">var beget = (function () {
 
