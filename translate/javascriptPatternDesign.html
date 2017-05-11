@@ -2881,12 +2881,16 @@ car.getModel();
 <p>Command 패턴은 메서드 호출, 요청 또는 연산을 하나의 객체로 캡슐화하는 것을 목적으로 합니다. 우리의 재량에 따라 실행할 수 있는 메소드 호출을 매개 변수로 만들고 전달하는 기능을 제공합니다. 게다가, 그것은 우리가 구체적인 <em>클래스</em>(객체)를 교환 할 때 전반적인 유연성을 더 많이 부여함으로써, 그것들을 구현하는 객체에서 동작을 호출하는 객체를 분리 할 수있게 해줍니다.</p>
 
 <p><em>Concrete</em> classes are best explained in terms of class-based programming languages and are related to the idea of abstract classes. An <em>abstract</em> class defines an interface, but doesn't necessarily provide implementations for all of its member functions. It acts as a base class from which others are derived. A derived class which implements the missing functionality is called a <em>concrete</em> class. </p>
+<p><em>Concrete</em> 클래스는 클래스 기반 프로그래밍 언어로 가장 잘 설명되며, 추상 클래스의 아이디어와 관련이 있습니다. 추상 클래스는 인터페이스를 정의하지만, 모든 멤버 함수에 대한 구현을 제공하지는 않습니다. 이 클래스는 다른 클래스를 파생시키는 기본 클래스의 역할을 합니다. 누락 된 기능을 구현하는 파생 클래스를 <em>Concrete</em> 클래스 라고 합니다. fix008</p>
 
 <p>The general idea behind the Command pattern is that it provides us a means to separate the responsibilities of issuing commands from anything executing commands, delegating this responsibility to different objects instead.</p>
+<p>Command 패턴의 일반적인 개념은 commands를 실행하는 것과 issuing commands의 책임을 분리하고, 대신 이 책임을 다른 객체에 위임하는 수단을 제공한다는 것입니다. fix009</p>
 
 <p>Implementation wise, simple command objects bind together both an action and the object wishing to invoke the action. They consistently include an execution operation (such as <code>run()</code> or <code>execute()</code>). All Command objects with the same interface can easily be swapped as needed and this is considered one of the larger benefits of the pattern.</p>
+<p>현명하게 구현하면, 간단한 command 객체는 동작과 동작을 호출하고자 하는 객체를 함께 바인딩 합니다. 그것들은 지속적으로 연산(<code>run()</code> 또는 <code>execute()</code> 와 같은)을 수행합니다. 인터페이스가 동일한 모든 Command 객체는 필요에 따라 쉽게 교체할 수 있습니다. 그리고 이것은 패턴의 더 큰 장점 중 하나로 간주됩니다.</p>
 
 <p>To demonstrate the Command pattern we're going to create a simple car purchasing service.</p>
+<p>Command 패턴을 설명하기 위해 간단한 자동차 구매 서비스를 만들어 보겠습니다.</p>
 
 <pre><code class="js">(function(){
 
@@ -2913,17 +2917,22 @@ car.getModel();
 </code></pre>
 
 <p>Taking a look at the above code, it would be trivial to invoke our <code>carManager</code> methods by directly accessing the object. We would all be forgiven for thinking there is nothing wrong with this - technically, it's completely valid JavaScript. There are however scenarios where this may be disadvantageous.</p>
+<p>위의 코드를 살펴보면, 객체에 직접 접근하여 <code>carManager</code> 메서드를 호출하는 것은 진부합니다. 관대하게 생각해 여기에 아무런 문제가 없습니다 - 기술적으로 완전하게 유효한 JS입니다. 그러나 이것이 불리하게 작용하는 시나리오가 있습니다.</p>
 
 <p>For example, imagine if the core API behind the <code>carManager</code> changed. This would require all objects directly accessing these methods within our application to also be modified. This could be viewed as a layer of coupling which effectively goes against the OOP methodology of loosely coupling objects as much as possible. Instead, we could solve this problem by abstracting the API away further.</p>
+<p>예를 들면, <code>carManager</code> 뒤에 있는 핵심 API가 변경된 경우를 상상해 보십시오. 어플리케이션에서 이러한 메서드에 직접 접근하는 모든 객체의 수정도 요구됩니다. 이것은 가능한 객체를 느슨하게 결합하는 OOP 방법론에 효과적으로 반대하는 결합 계층으로 볼 수 있습니다. 대신 API를 더욱 추상화하여 이 문제를 해결할 수 있습니다.</p>
 
 <p>Let's now expand on our <code>carManager</code> so that our application of the Command pattern results in the following: accept any named methods that can be performed on the <code>carManager</code> object, passing along any data that might be used such as the Car model and ID.</p>
+<p>이제 우리는 <code>carManager</code>를 확장하여 Command 패턴을 적용하면 다음과 같이 됩니다: Car 모델 그리고 ID와 같이 사용할 수 있는 모든 데이터를 전달하면서, <code>carManager</code> 객체에서 수행할 수 있는 명명된 메서드를 받아들입니다.</p>
 
 <p>Here is what we would like to be able to achieve:</p>
+<p>다음은 우리가 달성하고자하는 것입니다.</p>
 
 <pre><code class="js">carManager.execute( "buyVehicle", "Ford Escort", "453543" );
 </code></pre>
 
 <p>As per this structure we should now add a definition for the <code>carManager.execute</code> method as follows:</p>
+<p>이 구조체에 따라 다음과 같이 <code>carManager.execute</code> 메서드에 대한 정의를 추가합니다:</p>
 
 <pre><code class="js">carManager.execute = function ( name ) {
     return carManager[name] && carManager[name].apply( carManager, [].slice.call(arguments, 1) );
@@ -2931,6 +2940,7 @@ car.getModel();
 </code></pre>
 
 <p>Our final sample calls would thus look as follows:</p>
+<p>따라서 최종 샘플 호출은 다음과 같이 보입니다:</p>
 
 <pre><code class="js">carManager.execute( "arrangeViewing", "Ferrari", "14523" );
 carManager.execute( "requestInfo", "Ford Mondeo", "54323" );
