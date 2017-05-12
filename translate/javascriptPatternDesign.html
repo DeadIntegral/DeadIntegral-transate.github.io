@@ -3071,14 +3071,18 @@ In this example, calling <code>module.facade()</code> will actually trigger a se
 
 
 <p>The Factory pattern is another creational pattern concerned with the notion of creating objects. Where it differs from the other patterns in its category is that it doesn't explicitly require us use a constructor. Instead, a Factory can provide a generic interface for creating objects, where we can specify the type of factory object we wish to be created.</p>
+<p>Factory 패턴은 객체를 생성하는 개념과 관련된 또 다른 생성 패턴입니다. 해당 카테고리의 다른 패턴과 다른점은 명시적으로 생성자 사용을 요구하지 않는다는 것입니다. 대신 Factory는 객체 생성을 위한 일반적인 인터페이스를 제공할 수 있습니다. 여기에서 우리는 생성하고자 하는 팩토리 객체의 타입을 지정할 수 있습니다.</p>
 
 <p>Imagine that we have a UI factory where we are asked to create a type of UI component. Rather than creating this component directly using the <code>new</code> operator or via another creational constructor, we ask a Factory object for a new component instead. We inform the Factory what type of object is required (e.g "Button", "Panel") and it instantiates this, returning it to us for use.</p>
 
 <p>This is particularly useful if the object creation process is relatively complex, e.g. if it strongly depends on dynamic factors or application configuration.</p>
+<p>이것은 객체 생성 프로세스가 비교적 복잡하다면 특히 유용합니다. 예를 들면 동적 요소 혹은 어플리케이션 설정에 크게 의존하는 경우가 있습니다.</p>
 
 <p>Examples of this pattern can be found in UI libraries such as ExtJS where the methods for creating objects or components may be further subclassed.</p>
+<p>이 패턴의 예는 ExtJS와 같은 UI 라이브러리에서 찾아볼 수 있습니다. 여기에서 객체 혹은 컴포넌트를 생성하는 메서드는 서브클래스로 만들 수 있습니다.</p>
 
 <p>The following is an example that builds upon our previous snippets using the Constructor pattern logic to define cars. It demonstrates how a Vehicle <em>Factory</em> may be implemented using the Factory pattern:</p>
+<p>다음은 이전 스니펫을 기반으로 생성자 패턴 로직을 사용하여 cars를 정의한 예제입니다. Factory 패턴을 사용하여 Vehicle <em>Factory</em>를 구현하는 방법을 보여줍니다:</p>
 
 <pre><code class="js">// Types.js - Constructors used behind the scenes
 
