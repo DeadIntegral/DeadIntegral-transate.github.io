@@ -3190,14 +3190,22 @@ console.log( myBigTruck );
 <p>&nbsp;</p>
 <h3>When To Use The Factory Pattern</h3>
 
-<p>The Factory pattern can be especially useful when applied to the following situations:
+<p>The Factory pattern can be especially useful when applied to the following situations:</p>
+<p>Factory 패턴은 다음 상황에 적용 할 때 특히 유용 할 수 있습니다:</p>
 <ul>
-  <li>When our object or component setup involves a high level of complexity</li>
-  <li>When we need to easily generate different instances of objects depending on the environment we are in</li>
-  <li>When we're working with many small objects or components that share the same properties</li>
-  <li>When composing objects with instances of other objects that need only satisfy an API contract (aka, duck typing) to work. This is useful for decoupling.</li>
+	<li>When our object or component setup involves a high level of complexity</li>
+	<li>When we need to easily generate different instances of objects depending on the environment we are in</li>
+	<li>When we're working with many small objects or components that share the same properties</li>
+	<li>When composing objects with instances of other objects that need only satisfy an API contract (aka, duck typing) to work. This is useful for decoupling.</li>
 </ul>
-</p>
+<ul>
+	<li>객체 또는 컴포넌트 설정에 높은 수준의 복잡성이 포함되는 경우</li>
+	<li>우리의 환경에 따라 다른 객체 인스턴스를 쉽게 생성할 필요가 있을 때</li>
+	<li>동일한 프로퍼티를 공유하는 많은 작은 객체 또는 컴포넌트로 작업 할 때</li>
+	<li>오직 API contract의 작업만 만족시킬 필요가 있는, 다른 객체의 인스턴스로 객체를 구성할 때(일명 duck typing). 이는 디커플링에 유용합니다.</li>
+</ul>
+<p>*역자주 : API contract는 서비스 제공자에 의해 정의되며, 행동과 결과 객체뿐만 아니라 방법과 논증에 대한 서술입니다. 종종 컴포넌트를 개발할 때 인터페이스로 지정되기도 합니다. **fix010</p>
+
 <p>&nbsp;</p>
 <h3>When Not To Use The Factory Pattern</h3>
 
