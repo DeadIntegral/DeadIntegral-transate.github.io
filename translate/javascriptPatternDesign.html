@@ -84,6 +84,7 @@
 <h2>Acknowledgments</h2>
 
 <p>I will always be grateful for the talented technical reviewers who helped review and improve this book, including those from the community at large. The knowledge and enthusiasm they brought to the project was simply amazing. The official technical reviewers tweets and blogs are also a regular source of both ideas and inspiration and I wholeheartedly recommend checking them out.</p>
+<p>저는 이 책을 검토하고 개선하는 데 도움을 준 재능있는 기술 리뷰어들에게 항상 감사합니다. 그들이 프로젝트에 가져온 지식과 열정은 놀랍습니다. 공식 기술 리뷰 작성자 및 블로그는 주기적으로 아이디어와 영감을 얻을 수 있기 때문에 전 체크 하는 것을 추천합니다.</p>
 
 <ul>
 	<li>Nicholas Zakas (<a href="http://nczonline.net/">http://nczonline.net</a>, <a href="http://twitter.com/slicknet">@slicknet</a>)</li>
@@ -98,7 +99,7 @@
 <p>이 책을 쓰는데 영감을 준 Rebecca Murphey (<a href="http://rmurphey.com">http://rmurphey.com</a>, <a href="http://twitter.com/rmurphey">@rmurphey</a>) 에게도 감사의 말씀을 전합니다. 그리고 더 중요한 것은 GitHub 와 O'Reilly 를 통해 계속 사용할 수 있는 것입니다.</p>
 <p>*역자주 : O'Reilly는 이 책의 출판사 입니다.</p>
 
-<p>Finally, I would like to thank my wonderful wife Ellie, for all of her support while I was putting together this publication.</p>
+<p>마지막으로, 이 간행물을 작성하는 동안 물심양면으로 도와준 멋진 아내 Ellie에게 감사합니다.</p>
 
 <h2>Credits</h2>
 
@@ -1042,6 +1043,7 @@ myModule.reportMyConfig();
 <h4>Examples</h4>
 
 <p>Let's begin looking at an implementation of the Module pattern by creating a module which is self-contained.</p>
+<p>자체 포함 된 모듈을 만들어 Module Pattern의 구현을 살펴 보겠습니다.</p>
 
 <pre><code class="js">var testModule = (function () {
 
@@ -3211,14 +3213,18 @@ console.log( myBigTruck );
 
 <p>
 When applied to the wrong type of problem, this pattern can introduce an unnecessarily great deal of complexity to an application. Unless providing an interface for object creation is a design goal for the library or framework we are writing, I would suggest sticking to explicit constructors to avoid the unnecessary overhead.</p>
+<p>우리가 작성하는 라이브러리 혹은 프레임워크의 디자인 목표가 객체 생성을 위한 인터페이스를 제공하는 것이 아니라면, 불필요한 오버헤드를 피하기 위해 명시적인 생성자를 사용하는것이 좋습니다.</p>
 
 <p>Due to the fact that the process of object creation is effectively abstracted behind an interface, this can also introduce problems with unit testing depending on just how complex this process might be.</p>
+<p>객체 생성 프로세스가 인터페이스 뒤에 효과적으로 추상화되어 있기 때문에, 이 과정이 얼마나 복잡한지에 따라 단위 테스트에 문제를 일으킬 수 있습니다.</p>
 
 <h3>Abstract Factories</h3>
 
 <p>It is also useful to be aware of the <strong>Abstract Factory</strong> pattern, which aims to encapsulate a group of individual factories with a common goal. It separates the details of implementation of a set of objects from their general usage.</p>
+<p>공통된 목적을 가진 각각의 팩토리 그룹을 캡슐화하는 것을 겨냥해 <strong>Abstract Factory</strong>을 인식하는 것도 유용합니다. 객체 집합의 구현 세부 정보를 일반적인 용도로부터 구분합니다.</p>
 
 <p>An Abstract Factory should be used where a system must be independent from the way the objects it creates are generated or it needs to work with multiple types of objects.</p>
+<p>추상 Factory는 시스템이 객체를 생성하는 방식을 만들거나, 여러 유형의 객체로 작업해야 하는 방식으로부터 독립적인 곳에 사용해야 합니다.</p>
 
 <p>An example which is both simple and easier to understand is a vehicle factory, which defines ways to get or register vehicles types. The abstract factory can be named abstractVehicleFactory. The Abstract factory will allow the definition of types of vehicle like "car" or "truck" and concrete factories will implement only classes that fulfill the vehicle contract (e.g <code>Vehicle.prototype.drive</code> and <code>Vehicle.prototype.breakDown</code>).</p>
 
@@ -3274,15 +3280,19 @@ var truck = abstractVehicleFactory.getVehicle( "truck", {
 </h2>
 
 <p>In traditional programming languages such as C++ and Lisp, Mixins are classes which offer functionality that can be easily inherited by a sub-class or group of sub-classes for the purpose of function re-use.</p>
+<p>C++, List 와 같은 전통적인 프로그래밍 언어에서, Mixins는 함수 재사용을 위해 sub-class 혹은 group of sub-classes에 쉽게 상속할 수 있는 기능을 제공하는클래스입니다.</p>
 
 
 <h2>Sub-classing</h2>
 
 <p>For developers unfamiliar with sub-classing, we will go through a brief beginners primer on them before diving into Mixins and Decorators further.</p>
+<p>sub-classing에 익숙하지 않은 개발자를 위해서, Mixins 와 Decorators를 깊게 파고들기 전에 간단한 초보자 입문서를 살펴보겠습니다.</p>
 
 <p><em>Sub-classing</em> is a term that refers to inheriting properties for a new object from a base or <em>superclass</em> object. In traditional object-oriented programming, a class <code>B</code> is able to extend another class <code>A</code>. Here we consider <code>A</code> a superclass and <code>B</code> a subclass of <code>A</code>. As such, all instances of <code>B</code> inherit the methods from <code>A</code>. <code>B</code> is however still able to define its own methods, including those that override methods originally defined by <code>A</code>.</p>
+<p><em>Sub-classing</em>은 기본 또는 수퍼클래스 객체로부터 새 객체에 대한 프로퍼티에 상속하는 것을 나타내는 용어입니다. 전통적인 OOP에서 클래스 <code>B</code>는 다른 클래스 <code>A</code>를 확장 할 수 있습니다. 여기서 <code>A</code>는 수퍼클래스이고, <code>B</code>는 <code>A</code>의 서브클래스 입니다. 이를테면, <code>B</code>의 모든 인스턴스는 <code>A</code>로부터 메소드를 상속받습니다. 그러나 <code>B</code>는 여전히 <code>A</code>에 의해 정의된 기존의 메서드들의 오버라이드를 포함하여, 자체적으로 자신의 메서드를 정의하는 것도 가능합니다.</p>
 
 <p>Should <code>B</code> need to invoke a method in <code>A</code> that has been overridden, we refer to this as method chaining. Should <code>B</code> need to invoke the constructor <code>A</code> (the superclass), we call this constructor chaining.</p>
+<p><code>B</code>가 <code>A</code>를 오버라이드 하여 메소드를 호출해야 할 경우, 우리는 이것을 method chaining 이라고 합니다. <code>B</code>가 생성자 <code>A</code>(수퍼 클래스)를 호출해야 하는 경우, 우리는 이것을 constructor chaining이라고 합니다.</p>
 
 <p>In order to demonstrate sub-classing, we first need a base object that can have new instances of itself created. let's model this around the concept of a person.</p>
 
