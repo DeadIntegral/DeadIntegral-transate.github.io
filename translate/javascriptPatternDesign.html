@@ -99,6 +99,7 @@
 <p>이 책을 쓰는데 영감을 준 Rebecca Murphey (<a href="http://rmurphey.com">http://rmurphey.com</a>, <a href="http://twitter.com/rmurphey">@rmurphey</a>) 에게도 감사의 말씀을 전합니다. 그리고 더 중요한 것은 GitHub 와 O'Reilly 를 통해 계속 사용할 수 있는 것입니다.</p>
 <p>*역자주 : O'Reilly는 이 책의 출판사 입니다.</p>
 
+<p>Finally, I would like to thank my wonderful wife Ellie, for all of her support while I was putting together this publication.</p>
 <p>마지막으로, 이 간행물을 작성하는 동안 물심양면으로 도와준 멋진 아내 Ellie에게 감사합니다.</p>
 
 <h2>Credits</h2>
@@ -3295,6 +3296,7 @@ var truck = abstractVehicleFactory.getVehicle( "truck", {
 <p><code>B</code>가 <code>A</code>를 오버라이드 하여 메소드를 호출해야 할 경우, 우리는 이것을 method chaining 이라고 합니다. <code>B</code>가 생성자 <code>A</code>(수퍼 클래스)를 호출해야 하는 경우, 우리는 이것을 constructor chaining이라고 합니다.</p>
 
 <p>In order to demonstrate sub-classing, we first need a base object that can have new instances of itself created. let's model this around the concept of a person.</p>
+<p>sub-classing을 증명하기 위해, 우리는 먼저 자신의 새 인스턴스를 생성할 수 있는 기본 객체가 필요합니다. 한명의 사람을 개념으로 모델을 만들어 봅시다.</p>
 
 <pre><code class="js">var Person = function( firstName, lastName ){
 
@@ -3306,6 +3308,7 @@ var truck = abstractVehicleFactory.getVehicle( "truck", {
 </code></pre>
 
 <p>Next, we'll want to specify a new class (object) that's a subclass of the existing <code>Person</code> object. Let us imagine we want to add distinct properties to distinguish a <code>Person</code> from a <code>Superhero</code> whilst inheriting the properties of the <code>Person</code> "superclass". As superheroes share many common traits with normal people (e.g. name, gender), this should hopefully illustrate how sub-classing works adequately.</p>
+<p>다음으로, 기존 <code>Person</code> 객체의 subclass인 새 클래스(객체)를 지정할 겁니다. <code>Person</code> "superclass"의 프로퍼티를 상속하는 동안  <code>Person</code>을 <code>Superhero</code>와 구별하기 위하여 고유한 프로퍼티를 추가하려한다고 가정해 봅시다. superheroes가 일반인과 공통된 특징(예: 이름, 성별)을 공유하므로, sub-classing이 어떻게 적절하게 작동하는지를 잘 보여 줍니다.</p>
 
 <pre><code class="js">// a new instance of Person can then easily be created as follows:
 var clark = new Person( "Clark", "Kent" );
@@ -3331,6 +3334,7 @@ console.log( superman );
 </code></pre>
 
 <p>The <code>Superhero</code> constructor creates an object which descends from <code>Person</code>. Objects of this type have attributes of the objects that are above it in the chain and if we had set default values in the <code>Person</code> object, <code>Superhero</code> is capable of overriding any inherited values with values specific to it's object.</p>
+<p><code>Superhero</code> 생성자는 <code>Person</code>의 하위 객체를 생성합니다. 이 타입의 객체는 체인의 상위에 있는 객체의 어트리뷰트를 가집니다. 그리고 <code>Person</code> 객체에 기본값을 설정한 경우, <code>Superhero</code>는 상속 된 값을 해당 객체와 관련된 값으로 오버라이딩 할 수 있습니다.</p>
 
 <h2>Mixins</h2>
 
