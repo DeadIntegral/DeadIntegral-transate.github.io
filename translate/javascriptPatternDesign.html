@@ -3339,10 +3339,13 @@ console.log( superman );
 <h2>Mixins</h2>
 
 <p>In JavaScript, we can look at inheriting from Mixins as a means of collecting functionality through extension. Each new object we define has a prototype from which it can inherit further properties. Prototypes can inherit from other object prototypes but, even more importantly, can define properties for any number of object instances. We can leverage this fact to promote function re-use.</p>
+<p>JavaScript에서는 확장을 통해 기능을 모으는 수단으로 Mixins 으로부터 상속받을 수 있습니다. 우리가 정의한 각각의 새로운 객체는, 프로퍼티를 상속받을 수 있는 프로토타입을 가지고 있습니다. 프로토타입은 다른 객체 프로토타입들로부터 상속받을 수 있습니다. 하지만 더 중요한 것은 여러 객체 인스턴스에 대한 프로퍼티를 정의할 수 있다는 것입니다. 우리는 이 사실을 이용하여 함수 재사용을 촉진할 수 있습니다.</p>
 
 <p>Mixins allow objects to borrow (or inherit) functionality from them with a minimal amount of complexity. As the pattern works well with JavaScripts object prototypes, it gives us a fairly flexible way to share functionality from not just one Mixin, but effectively many through multiple inheritance.</p>
+<p>Mixins는 최소한의 복잡성으로 객체가 기능을 차용(혹은 상속)할 수 있도록 합니다. 패턴이 JavaScripts 객체 프로토타입과 잘 작동하기 때문에, 하나의 Mixin 뿐만 아니라 효과적으로 많은 다중상속을 통해, 기능을 공유할 수 있는 매우 유연한 방법을 제공합니다. fix011</p>
 
 <p>They can be viewed as objects with attributes and methods that can be easily shared across a number of other object prototypes. Imagine that we define a Mixin containing utility functions in a standard object literal as follows:</p>
+<p>그것들은 여러 객체 프로타타입들 간에 쉽게 공유할 수 있는 어트리뷰트와 메서드를 사용하여 객체로 볼 수 있습니다. 다음과 같이 표준 객체 리터럴에 Mixin을 포함하는 유틸리티 함수를 정의한다고 가정해봅시다.</p>
 
 <pre><code class="js">var myMixins = {
 
