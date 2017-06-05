@@ -3365,6 +3365,7 @@ console.log( superman );
 </code></pre>
 
 <p>We can then easily extend the prototype of existing constructor functions to include this behavior using a helper such as the Underscore.js <code>_.extend()</code> method:</p>
+<p>그러면 우리는 Underscore.js의 <code>_.extend()</code> 메서드와 같은 helper를 사용하여, 이 동작을 포함하도록 기존 생성자 함수의 프로토타입을 쉽게 확장할 수 있습니다.</p>
 
 <pre><code class="js">// A skeleton carAnimator constructor
 function CarAnimator(){
@@ -3395,10 +3396,13 @@ myAnimator.stop();
 </code></pre>
 
 <p>As we can see, this allows us to easily "mix" in common behaviour into object constructors fairly trivially. </p>
+<p>우리가 볼 수 있듯, 이것은 공통적인 행동을 객체 생성자로 쉽게 "mix" 하도록 해줍니다.</p>
 
 <p>In the next example, we have two constructors: a Car and a Mixin. What we're going to do is augment (another way of saying extend) the Car so that it can inherit specific methods defined in the Mixin, namely <code>driveForward()</code> and <code>driveBackward()</code>. This time we won't be using Underscore.js.</p>
+<p>다음 예제에 Car 와 Mixin 두 생성자가 있습니다. 우리는 Mixin에 정의된 특정 메소드, 즉 <code>driveForward()</code> 와 <code>driveBackward()</code>를 상속받을 수 있도록 Car 를 augment(확장의 또다른 방법)할 것입니다. 이번에는 Underscore.js를 사용하지 않을 것입니다.</p>
 
 <p>Instead, this example will demonstrate how to augment a constructor to include functionality without the need to duplicate this process for every constructor function we may have.</p>
+<p>대신 이 예제는 우리가 가질 수 있는 모든 생성자 함수에 대해 프로세스를 복제 할 필요 없이, 생성자를 기능을 포함하도록 augment 하는 방법을 설명합니다.</p>
 
 <pre><code class="js">// Define a simple Car constructor
 var Car = function ( settings ) {
@@ -3492,10 +3496,13 @@ mySportsCar.driveSideways();
 <h3>Advantages &amp; Disadvantages</h3>
 
 <p>Mixins assist in decreasing functional repetition and increasing function re-use in a system. Where an application is likely to require shared behaviour across object instances, we can easily avoid any duplication by maintaining this shared functionality in a Mixin and thus focusing on implementing only the functionality in our system which is truly distinct.</p>
+<p>Mixins은 함수 반복을 감소시키고, 시스템 내의 함수 재사용 증가에 도움을 줍니다. 애플리케이션이 객체 인스턴스에서 공유된 동작을 요구하는 경우, Mixin에서 이 공유 기능을 유지함으로써 중복을 피할 수 있습니다. 따라서 우리 시스템에 정말로 뚜렷한 함수들만 구현하는데 중점을 둘 수 있습니다.</p>
 
 <p>That said, the downsides to Mixins are a little more debatable. Some developers feel that injecting functionality into an object prototype is a bad idea as it leads to both prototype pollution and a level of uncertainty regarding the origin of our functions. In large systems this may well be the case.</p>
+<p>Mixins의 단점은 조금 논쟁의 여지가 있습니다. 일부 개발자는 객체 프로토타입에 함수를 삽입하는 것이 프로토타입 오염과 함수의 근원에 관련한 불확실성을 초래하기 때문에 나쁜 다고 생각합니다. 대형 시스템에는 이러한 경우가 있을 수 있습니다.</p>
 
 <p>I would argue that strong documentation can assist in minimizing the amount of confusion regarding the source of mixed in functions, but as with every pattern, if care is taken during implementation we should be okay.</p>
+<p>함수 mix의 근원에 관한 혼란의 양을 최소화 하는데 도움이 될 거라고 강력하게 주장합니다. 그러나 모든 패턴과 마찬가지로, 구현 중에 주의를 기울이면 괜찮을 겁니다.</p>
 
 <p>&nbsp;</p>
 
@@ -4466,7 +4473,7 @@ Note: Although we may believe that simply caching our jQuery code may offer just
 </h1>
 
 <p>In this section, we're going to review three very important architectural patterns - MVC (Model-View-Controller), MVP (Model-View-Presenter) and MVVM (Model-View-ViewModel). In the past, these patterns have been heavily used for structuring desktop and server-side applications but it's only been in recent years that come to being applied to JavaScript.</p>
-<p>이 섹션에서는 MVC(Model-View-Controller), MVP (Model-View-Presenter),  MVVM (Model-View-ViewModel)의 세 가지 중요한 아키텍쳐상의 패턴을 살펴보겠습니다. 과거에는 이러한 패턴이 데스크톱과 서버사이드 어플리케이션에서 많이 사용되었지만, 최근에는 JavaScript에도 적용합니다.</p>
+<p>이 섹션에서는 MVC(Model-View-Controller), MVP (Model-View-Presenter),  MVVM (Model-View-ViewModel)의 세 가지 중요한 아키텍쳐 패턴을 살펴보겠습니다. 과거에는 이러한 패턴이 데스크톱과 서버사이드 어플리케이션에서 많이 사용되었지만, 최근에는 JavaScript에도 적용합니다.</p>
 
 <p>As the majority of JavaScript developers currently using these patterns opt to utilize libraries such as Backbone.js for implementing an MVC/MV*-like structure, we will compare how modern solutions such as it differ in their interpretation of MVC compared to classical takes on these patterns.</p>
 <p>이 패턴을 사용하는 대다수의 JavaScript 개발자들은 MVC / MV* 과 같은 구조를 구현하기 위해서 Backbone.js 와 같은 라이브러리를 사용합니다. 따라서 그들의 MVC 해석과 고전적인 이 패턴들과 다른 점을 비교해 보겠습니다.</p>
@@ -4476,6 +4483,7 @@ Note: Although we may believe that simply caching our jQuery code may offer just
 
 <h2 id="detailmvc">MVC</h2>
 <p>MVC is an architectural design pattern that encourages improved application organization through a separation of concerns. It enforces the isolation of business data (Models) from user interfaces (Views), with a third component (Controllers) traditionally managing logic and user-input. The pattern was originally designed by <a href="http://en.wikipedia.org/wiki/Trygve_Reenskaug">Trygve Reenskaug</a> during his time working on Smalltalk-80 (1979) where it was initially called Model-View-Controller-Editor. MVC went on to be described in depth in 1995's <a href="http://www.amazon.co.uk/Design-patterns-elements-reusable-object-oriented/dp/0201633612">&ldquo;Design Patterns: Elements of Reusable Object-Oriented Software&rdquo;</a> (The "GoF" book), which played a role in popularizing its use.</p>
+<p>MVC는 관계를 분리하여 어플리케이션 구성을 향상시키는 아키텍쳐 디자인 패턴 입니다. 이것은 전통적으로 로직과 사용자 입력을 관리하는 세 번째 컴포넌트(Controllers)를 사용하여, 유저 인터페이스(Views)에서 비즈니스 데이터(Models)를 독립시킵니다. 이 패턴은 본래 <a href="http://en.wikipedia.org/wiki/Trygve_Reenskaug">Trygve Reenskaug</a>가 Model-View-Controller-Editor 라고 불리는 Smalltalk-80 (1979)에서 작업하면서 디자인했습니다. MVC는 책 <a href="http://www.amazon.co.uk/Design-patterns-elements-reusable-object-oriented/dp/0201633612">&ldquo;Design Patterns: Elements of Reusable Object-Oriented Software&rdquo;</a> (GoF 책) 에서 심도있게 설명되었으며, 이 책은 사용법이 대중화되는 역할을 수행했습니다.</p>
 
 <h3>Smalltalk-80 MVC</h3>
 <p>It's important to understand what the original MVC pattern was aiming to solve as it's mutated quite heavily since the days of its origin. Back in the 70's, graphical user-interfaces were few and far between and a concept known as <a href="http://martinfowler.com/eaaDev/uiArchs.html">Separated Presentation</a> began to be used as a means to make a clear division between domain objects which modeled concepts in the real world (e.g a photo, a person) and the presentation objects which were rendered to the user's screen.</p>
