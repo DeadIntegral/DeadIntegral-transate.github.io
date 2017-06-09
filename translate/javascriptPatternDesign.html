@@ -500,7 +500,7 @@ The following are tips I would suggest if interested in creating a new design pa
 <p>*역자주 : 책이 쓰여질 때는 없었지만, ECMA6 에는 클래스가 있습니다. 하지만 이 클래스 역시 새로운 객체지향 상속 모델이 아니라, 이 책에서 사용한 것과 마찬가지로 <strong>함수</strong>입니다.</p>
 
 <p>The most common approach to achieving this is by defining a JavaScript function where we then create an object using the <code>new</code> keyword. <code>this</code> can be used to help define new properties and methods for the object as follows:</p>
-<p>이것을 달성하기위한 가장 일반적인 접근법은 JavaScript 함수를 정의하고 <code>new</code> 키워드를 사용하여 객체를 생성하는 것입니다. <code>this</code>는 다음과 같이 객체의 새 속성과 메서드를 정의하는 데 사용할 수 있습니다.</p>
+<p>이것을 달성하기위한 가장 일반적인 접근법은 JavaScript 함수를 정의하고 <code>new</code> 키워드를 사용하여 객체를 생성하는 것입니다. <code>this</code>는 다음과 같이 객체의 새 프로퍼티와 메서드를 정의하는 데 사용할 수 있습니다.</p>
 <pre><code class="js">// A car "class"
 function Car( model ) {
 
@@ -2633,7 +2633,7 @@ The Observer pattern is useful for decoupling a number of different scenarios in
 <p>*역자주 : kicked off 는 이벤트 데이터를 빼내는 것을 말합니다.<br> ex) $('id').on('click', function(e){var event = e;})</p>
 
 <p>In the case of the mediator, though, the business logic and workflow is aggregated into the mediator itself. The mediator decides when an object should have its methods called and attributes updated based on factors that the mediator knows about. It encapsulates the workflow and process, coordinating multiple objects to produce the desired system behaviour. The individual objects involved in this workflow each know how to perform their own task. But it’s the mediator that tells the objects when to perform the tasks by making decisions at a higher level than the individual objects.</p>
-<p>하지만 mediator의 경우, 비즈니스 로직과 워크플로우는 mediator 자체에 통합됩니다. mediator는 객체가 호출되어야 하는 메소드를 결정하고, mediator가 알고있는 factors를 기반으로 업데이트 된 attributes를 결정합니다. mediator는 워크플로우와 프로세스를 캡슐화하여, 여러 객체들을 통합해 원하는 시스템 동작을 생성합니다. 워크플로우에 관련된 개별 객체들은 각각 자신의 작업을 수행하는 방법을 알고 있습니다. 그러나 객체를 개별 객체보다 높은 수준에서 결정함으로써, 작업을 수행 할 시기를 알려주는 것은 mediator입니다.</p>
+<p>하지만 mediator의 경우, 비즈니스 로직과 워크플로우는 mediator 자체에 통합됩니다. mediator는 객체가 호출되어야 하는 메서드를 결정하고, mediator가 알고있는 factors를 기반으로 업데이트 된 attributes를 결정합니다. mediator는 워크플로우와 프로세스를 캡슐화하여, 여러 객체들을 통합해 원하는 시스템 동작을 생성합니다. 워크플로우에 관련된 개별 객체들은 각각 자신의 작업을 수행하는 방법을 알고 있습니다. 그러나 객체를 개별 객체보다 높은 수준에서 결정함으로써, 작업을 수행 할 시기를 알려주는 것은 mediator입니다.</p>
 
 <p>An event aggregator facilitates a "fire and forget" model of communication. The object triggering the event doesn’t care if there are any subscribers. It just fires the event and moves on. A mediator, though, might use events to make decisions, but it is definitely not "fire and forget". A mediator pays attention to a known set of input or activities so that it can facilitate and coordinate additional behavior with a known set of actors (objects).</p>
 <p>event aggregator는 소통의 "fire and forget" 모델을 용이하게 합니다. 이벤트를 발생시키는 객체는 subscribers가 있는지 상관하지 않습니다. event aggregator는 이벤트를 시작하고 계속 움직입니다. 하지만 mediator는 events를 사용하여 결정을 내릴 수는 있지만, 명확한 "fire and forget" 는 아닙니다. mediator는 알려진 액터(객체) 집합과 함께 추가적인 동작을 용이하게 하고 조정할 수 있도록, 알려진 입력했거나 활동중인 알려진 집합에 주의를 기울입니다.</p>
@@ -2881,7 +2881,7 @@ car.getModel();
 </h2>
 
 <p>The Command pattern aims to encapsulate method invocation, requests or operations into a single object and gives us the ability to both parameterize and pass method calls around that can be executed at our discretion. In addition, it enables us to decouple objects invoking the action from the objects which implement them, giving us a greater degree of overall flexibility in swapping out concrete <em>classes</em> (objects).</p>
-<p>Command 패턴은 메서드 호출, 요청 또는 연산을 하나의 객체로 캡슐화하는 것을 목적으로 합니다. 우리의 재량에 따라 실행할 수 있는 메소드 호출을 매개 변수로 만들고 전달하는 기능을 제공합니다. 게다가, 그것은 우리가 구체적인 <em>클래스</em>(객체)를 교환 할 때 전반적인 유연성을 더 많이 부여함으로써, 그것들을 구현하는 객체에서 동작을 호출하는 객체를 분리 할 수있게 해줍니다.</p>
+<p>Command 패턴은 메서드 호출, 요청 또는 연산을 하나의 객체로 캡슐화하는 것을 목적으로 합니다. 우리의 재량에 따라 실행할 수 있는 메서드 호출을 매개 변수로 만들고 전달하는 기능을 제공합니다. 게다가, 그것은 우리가 구체적인 <em>클래스</em>(객체)를 교환 할 때 전반적인 유연성을 더 많이 부여함으로써, 그것들을 구현하는 객체에서 동작을 호출하는 객체를 분리 할 수있게 해줍니다.</p>
 
 <p><em>Concrete</em> classes are best explained in terms of class-based programming languages and are related to the idea of abstract classes. An <em>abstract</em> class defines an interface, but doesn't necessarily provide implementations for all of its member functions. It acts as a base class from which others are derived. A derived class which implements the missing functionality is called a <em>concrete</em> class. </p>
 <p><em>Concrete</em> 클래스는 클래스 기반 프로그래밍 언어로 가장 잘 설명되며, 추상 클래스의 아이디어와 관련이 있습니다. 추상 클래스는 인터페이스를 정의하지만, 모든 멤버 함수에 대한 구현을 제공하지는 않습니다. 이 클래스는 다른 클래스를 파생시키는 기본 클래스의 역할을 합니다. 누락 된 기능을 구현하는 파생 클래스를 <em>Concrete</em> 클래스 라고 합니다. fix008</p>
@@ -3290,10 +3290,10 @@ var truck = abstractVehicleFactory.getVehicle( "truck", {
 <p>sub-classing에 익숙하지 않은 개발자를 위해서, Mixins 와 Decorators를 깊게 파고들기 전에 간단한 초보자 입문서를 살펴보겠습니다.</p>
 
 <p><em>Sub-classing</em> is a term that refers to inheriting properties for a new object from a base or <em>superclass</em> object. In traditional object-oriented programming, a class <code>B</code> is able to extend another class <code>A</code>. Here we consider <code>A</code> a superclass and <code>B</code> a subclass of <code>A</code>. As such, all instances of <code>B</code> inherit the methods from <code>A</code>. <code>B</code> is however still able to define its own methods, including those that override methods originally defined by <code>A</code>.</p>
-<p><em>Sub-classing</em>은 기본 또는 수퍼클래스 객체로부터 새 객체에 대한 프로퍼티에 상속하는 것을 나타내는 용어입니다. 전통적인 OOP에서 클래스 <code>B</code>는 다른 클래스 <code>A</code>를 확장 할 수 있습니다. 여기서 <code>A</code>는 수퍼클래스이고, <code>B</code>는 <code>A</code>의 서브클래스 입니다. 이를테면, <code>B</code>의 모든 인스턴스는 <code>A</code>로부터 메소드를 상속받습니다. 그러나 <code>B</code>는 여전히 <code>A</code>에 의해 정의된 기존의 메서드들의 오버라이드를 포함하여, 자체적으로 자신의 메서드를 정의하는 것도 가능합니다.</p>
+<p><em>Sub-classing</em>은 기본 또는 수퍼클래스 객체로부터 새 객체에 대한 프로퍼티에 상속하는 것을 나타내는 용어입니다. 전통적인 OOP에서 클래스 <code>B</code>는 다른 클래스 <code>A</code>를 확장 할 수 있습니다. 여기서 <code>A</code>는 수퍼클래스이고, <code>B</code>는 <code>A</code>의 서브클래스 입니다. 이를테면, <code>B</code>의 모든 인스턴스는 <code>A</code>로부터 메서드를 상속받습니다. 그러나 <code>B</code>는 여전히 <code>A</code>에 의해 정의된 기존의 메서드들의 오버라이드를 포함하여, 자체적으로 자신의 메서드를 정의하는 것도 가능합니다.</p>
 
 <p>Should <code>B</code> need to invoke a method in <code>A</code> that has been overridden, we refer to this as method chaining. Should <code>B</code> need to invoke the constructor <code>A</code> (the superclass), we call this constructor chaining.</p>
-<p><code>B</code>가 <code>A</code>를 오버라이드 하여 메소드를 호출해야 할 경우, 우리는 이것을 method chaining 이라고 합니다. <code>B</code>가 생성자 <code>A</code>(수퍼 클래스)를 호출해야 하는 경우, 우리는 이것을 constructor chaining이라고 합니다.</p>
+<p><code>B</code>가 <code>A</code>를 오버라이드 하여 메서드를 호출해야 할 경우, 우리는 이것을 method chaining 이라고 합니다. <code>B</code>가 생성자 <code>A</code>(수퍼 클래스)를 호출해야 하는 경우, 우리는 이것을 constructor chaining이라고 합니다.</p>
 
 <p>In order to demonstrate sub-classing, we first need a base object that can have new instances of itself created. let's model this around the concept of a person.</p>
 <p>sub-classing을 증명하기 위해, 우리는 먼저 자신의 새 인스턴스를 생성할 수 있는 기본 객체가 필요합니다. 한명의 사람을 개념으로 모델을 만들어 봅시다.</p>
@@ -3399,7 +3399,7 @@ myAnimator.stop();
 <p>우리가 볼 수 있듯, 이것은 공통적인 행동을 객체 생성자로 쉽게 "mix" 하도록 해줍니다.</p>
 
 <p>In the next example, we have two constructors: a Car and a Mixin. What we're going to do is augment (another way of saying extend) the Car so that it can inherit specific methods defined in the Mixin, namely <code>driveForward()</code> and <code>driveBackward()</code>. This time we won't be using Underscore.js.</p>
-<p>다음 예제에 Car 와 Mixin 두 생성자가 있습니다. 우리는 Mixin에 정의된 특정 메소드, 즉 <code>driveForward()</code> 와 <code>driveBackward()</code>를 상속받을 수 있도록 Car 를 augment(확장의 또다른 방법)할 것입니다. 이번에는 Underscore.js를 사용하지 않을 것입니다.</p>
+<p>다음 예제에 Car 와 Mixin 두 생성자가 있습니다. 우리는 Mixin에 정의된 특정 메서드, 즉 <code>driveForward()</code> 와 <code>driveBackward()</code>를 상속받을 수 있도록 Car 를 augment(확장의 또다른 방법)할 것입니다. 이번에는 Underscore.js를 사용하지 않을 것입니다.</p>
 
 <p>Instead, this example will demonstrate how to augment a constructor to include functionality without the need to duplicate this process for every constructor function we may have.</p>
 <p>대신 이 예제는 우리가 가질 수 있는 모든 생성자 함수에 대해 프로세스를 복제 할 필요 없이, 생성자를 기능을 포함하도록 augment 하는 방법을 설명합니다.</p>
@@ -3515,15 +3515,19 @@ mySportsCar.driveSideways();
 
 <p>Classically, Decorators offered the ability to add behaviour to existing classes in a system dynamically. The idea was that the <em>decoration</em> itself wasn't essential to the base functionality of the class, otherwise it would be baked into the <em>superclass</em> itself.</p>
 <p>전통적으로 Decorators는 시스템의 기존 클래스에 동작을 동적으로 추가 할 수있는 기능을 제공했습니다. 아이디어는 <em>decoration</em>자체가 클래스의 기본 기능에 필수적이지 않다는 것입니다. 그렇지 않으면 <em>superclass</em> 자체로 baked 됩니다.</p>
-<p>*역자주 : bake는 [1. 컴파일할 준비가 되면 구울 준비가 된 것입니다. 2. 베이킹한 것은 되둘릴 수 없기 때문에, 베이크한 것은 수정이 불가능합니다. 3. 하프 베이크는 있을 수 없기 때문에, 상상할 수 없는 것입니다. ] 등의 뜻을 가진 은유이니다.</p>
+<p>*역자주 : bake는 [ 1. 컴파일할 준비가 되면 구울 준비가 된 것입니다. 2. 베이킹한 것은 되둘릴 수 없기 때문에, 베이크한 것은 수정이 불가능합니다. 3. 하프 베이크는 있을 수 없기 때문에, 상상할 수 없는 것입니다. ] 등의 뜻을 가진 은유입니다.</p>
 
 <p>They can be used to modify existing systems where we wish to add additional features to objects without the need to heavily modify the underlying code using them. A common reason why developers use them is their applications may contain features requiring a large quantity of distinct types of object. Imagine having to define hundreds of different object constructors for say, a JavaScript game.</p>
+<p>underlying code를 사용해 그것들을 크게 수정할 필요 없이, 객체에 추가적인 기능을 더하려는 기존 시스템을 수정하기 위해 사용할 수 있습니다. 개발자들이 그것을 사용하는 공통적인 이유는, 어플리케이션에 대량의 고유한 유형의 객체를 필요로 하는 기능이 포함되어이기 때문입니다. JavaScript 게임을 위해 수백 가지의 다른 객체 생성자를 정의해야 한다고 상상해보십시오.</p>
 
 <p>The object constructors could represent distinct player types, each with differing capabilities. A <em>Lord of the Rings</em> game could require constructors for <code>Hobbit</code>, <code>Elf</code>, <code>Orc</code>, <code>Wizard</code>, <code>Mountain Giant</code>, <code>Stone Giant</code> and so on, but there could easily be hundreds of these. If we then factored in capabilities, imagine having to create sub-classes for each combination of capability type e.g <code>HobbitWithRing</code>,<code>HobbitWithSword</code>, <code>HobbitWithRingAndSword</code> and so on.This isn't very practical and certainly isn't manageable when we factor in a growing number of different abilities.</p>
+<p>객체 생성자는 서로 다른 기능을 가진 고유한 플레이어 타입을 나타낼 수 있습니다. <em>Lord of the Rings</em> 게임은 <code>Hobbit</code>, <code>Elf</code>, <code>Orc</code>, <code>Wizard</code>, <code>Mountain Giant</code>, <code>Stone Giant</code> 등 필요한 생성자가 수백가지가 있을 수 있습니다. 기능을 고려한 후에는 각 기능 타입의 조합한 서브 클래스들( <code>HobbitWithRing</code>, <code>HobbitWithSword</code>, <code>HobbitWithRingAndSword</code> )을 생성해야 한다고 상상해보십시오. 이것은 전혀 실용적이지 않습니다. 또한 더욱 많아질 능력을 고려할 때, 관리할 수 없습니다.</p>
 
 <p>The Decorator pattern isn't heavily tied to how objects are created but instead focuses on the problem of extending their functionality. Rather than just relying on prototypal inheritance, we work with a single base object and progressively add decorator objects which provide the additional capabilities. The idea is that rather than sub-classing, we add (decorate) properties or methods to a base object so it's a little more streamlined.</p>
+<p>Decorator 패턴은 객체 생성 방법에 크게 의존하지 않고, 대신 기능 확장 문제에만 초점을 맞춥니다. prototypal 상속에 의존하기보다는 하나의 기본 객체로 작업하고, 점진적으로 추가적인 가능성을 제공하는 decorator 객체를 추가합니다. 아이디어는 sub-classing이 아닌, 프로퍼티나 메서드를 기본 객체에 더하여, 좀 더 간소화 하는 것입니다.</p>
 
 <p>Adding new attributes to objects in JavaScript is a very straight-forward process so with this in mind, a very simplistic decorator may be implemented as follows:</p>
+<p>JavaScript에서 객체에 새로운 어트리뷰트를 추가하는 것은 매우 간단한 과정이므로, 염두에 두면 다음과 같이 매우 심플한 decorator를 구현할 수 있습니다:</p>
 
 <h3>Example 1: Decorating Constructors With New Functionality</h3>
 
@@ -3574,6 +3578,7 @@ console.log( secondInstance );
 </code></pre>
 
 <p>This type of simplistic implementation is functional, but it doesn't really demonstrate all of the strengths Decorators have to offer. For this, we're first going to go through my variation of the Coffee example from an excellent book called <em>Head First Design Patterns</em> by Freeman, Sierra and Bates, which is modeled around a Macbook purchase.</p>
+<p>이러한 심플한 구현의 타입은 기능적이지만, Decorators가 갖고 있는 모든 장점을 실제로 보여주지는 못합니다. 이를 위해 먼저 Freeman, Sierra, Bates 의 <em>Head First Design Patterns</em> 라고 불리는 훌륭한 책에서 나온 Coffee 예제의 변형을 살펴볼 것입니다. 이 책은 맥북 구매를 모델로 한 것입니다.</p>
 
 <h3>Example 2: Decorating Objects With Multiple Decorators</h3>
 
