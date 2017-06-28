@@ -3925,10 +3925,15 @@ $("#log")
 <h2>Advantages &amp; Disadvantages</h2>
 
 <p>Developers enjoy using this pattern as it can be used transparently and is also fairly flexible - as we've seen, objects can be wrapped or "decorated" with new behavior and then continue to be used without needing to worry about the base object being modified. In a broader context, this pattern also avoids us needing to rely on large numbers of subclasses to get the same benefits.</p>
+<p>개발자는 이 패턴을 투명하게 사용할 수 있고, 또한 상당히 유연하기 때문에 이 패턴을 사용하는 걸 즐깁니다 - 보았듯이, 객체는 새로운 동작으로 래핑 혹은 "decorated" 될 수 있습니다. 그리고 수정 된 기존 객체에 대해 걱정할 필요 없이 계속 사용할 수 있습니다. 더 넓은 맥락에서, 이 패턴은 또한, 동일한 이점을 얻기 위해서 많은 수의 서브클래스에 의존 할 필요를 회피합니다.</p>
+
+<p>*역자주 : 클래스의 오버라이드와 유사한 개념입니다. 본래의 객체는 남아있고, 객체를 복사한 후 일부 프로퍼티를 수정 및 추가하여 사용합니다.</p>
 
 <p>There are however drawbacks that we should be aware of when implementing the pattern. If poorly managed, it can significantly complicate our application architecture as it introduces many small, but similar objects into our namespace. The concern here is that in addition to becoming hard to manage, other developers unfamiliar with the pattern may have a hard time grasping why it's being used.</p>
+<p>그러나 패턴을 구현할 때 우리가 알아야 할 단점이 있습니다. 관리가 잘 이루어지지 않으면, 우리의 네임스페이스에 많은, 작지만 유사한 객체가 도입됩니다. 이는 애플리케이션 아키텍처를 상당히 복잡하게 만들 수 있습니다. 여기서 중요한 점은, 관리하기가 어려워 짐에 따라 패턴에 익숙하지 않은 다른 개발자는, 왜 이것이 사용되는지를 파악하는데 어려움을 겪을 수 있다는 점입니다.</p>
 
 <p>Sufficient commenting or pattern research should assist with the latter, however as long as we keep a handle on how widespread we use the decorator in our applications we should be fine on both counts.</p>
+<p>충분한 주석을 달거나, 패턴 연구가 후자를 지원해야 합니다. 그러나 우리의 애플리케이션에서 decorator를 광범위하게 사용하는지에 대한 핸들을 유지하는 한, 두 가지 모두 잘해야 합니다. fix012</p>
 
 <p>&nbsp;</p>
 <!--end detail-->
@@ -3942,18 +3947,24 @@ $("#log")
 
 
 <p>The Flyweight pattern is a classical structural solution for optimizing code that is repetitive, slow and inefficiently shares data. It aims to minimize the use of memory in an application by sharing as much data as possible with related objects (e.g application configuration, state and so on).</p>
+<p>Flyweight 패턴은 반복적이고 느리며 비효율적으로 데이터를 공유하는 코드를, 최적화 하기 위한 고전적이고 구조적인 솔루션입니다. 가능한 한 많은 데이터를 관련 객체(예: 애플리케이션 설정, 상태 등)와 공유하여, 애플리케이션에서 메모리 사용을 최소화하는 것을 목표로 합니다.</p>
 
 <p>The pattern was first conceived by Paul Calder and Mark Linton in 1990 and was named after the boxing weight class that includes fighters weighing less than 112lb. The name Flyweight itself is derived from this weight classification as it refers to the small weight (memory footprint) the pattern aims to help us achieve.</p>
+<p>이 패턴은 1990년 Paul Calder와 Mark Linton에 의해 처음으로 등장하였으며, 112파운드 이하의 파이터를 포함하는 복싱 중량 클래스의 이름을 따서 작명되었습니다. Flyweight 라는 이름 자체가 우리의 목표를 겨냥하는데 도움이 되는 small weight (memory footprint)를 의미하기 때문에, 무게 분류에서 파생되었습니다.</p>
 
 <p>In practice, Flyweight data sharing can involve taking several similar objects or data constructs used by a number of objects and placing this data into a single external object. We can pass through this object to those depending on this data, rather than storing identical data across each one.</p>
+<p>실제로 Flyweight 데이터 공유는 여러 객체에서 사용하는 몇몇의 유사한 객체 또는 데이터 구조를 여러개 가져와, 이 데이터를 단일 외부 객체에 배치하는 작업이 포함될 수 있습니다. 우리는 이 데이터를 다른곳에 저장하는 대신에, 이 데이터를 사용하여 이 객체를 전달할 수 있습니다.</p>
 
 <h2>Using Flyweights</h2>
 
 <p>There are two ways in which the Flyweight pattern can be applied. The first is at the data-layer, where we deal with the concept of sharing data between large quantities of similar objects stored in memory.</p>
+<p>Flyweight 패턴을 적용할 수 있는 두 가지 방법이 있습니다. 첫 번째는 data-layer 입니다. 여기서는 메모리에 보관된 많은 양의 유사한 객체간에 데이터를 공유하는 개념을 다룹니다.</p>
 
 <p>The second is at the DOM-layer where the Flyweight can be used as a central event-manager to avoid attaching event handlers to every child element in a parent container we wish to have some similar behavior.</p>
+<p>두 번째는 DOM-layer에서 사용합니다. Flyweight 는 중앙 이벤트 관리자로, 이벤트 핸들러를 부모 컨테이너에 있는 모든 자식 element에 연결하는 것을 피해서, 비슷한 동작을 할 수 있습니다.</p>
 
 <p>As the data-layer is where the flyweight pattern is most used traditionally, we'll take a look at this first.</p>
+<p>전통적으로 flyweight 패턴이 가장 많이 사용되는 곳은, data-layer이므로 먼저 살펴보겠습니다.</p>
 
 <h2>Flyweights and sharing data</h2>
 
