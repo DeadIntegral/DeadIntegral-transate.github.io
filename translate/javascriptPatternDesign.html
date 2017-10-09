@@ -4523,14 +4523,21 @@ Note: Although we may believe that simply caching our jQuery code may offer just
 <h2>MVC For JavaScript Developers</h2>
 
 <p>We've reviewed the 70's, but let us now return to the here and now. In modern times, the MVC pattern has been applied to a diverse range of programming languages including of most relevance to us: JavaScript. JavaScript now has a number of frameworks boasting support for MVC (or variations on it, which we refer to as the MV* family), allowing developers to easily add structure to their applications without great effort.</p>
+<p>70년대를 리뷰 했지만, 이제 다시 현재로 돌아오겠습니다. 현대에는 MVC 패턴이 우리와 관련성이 높은 다양한 프로그래밍 언어(JavaScript)를 포함하여 다양한 프로그래밍 언어에 적용되었습니다. JavaScript는 이제 MVC(또는 MV* 로 언급되는 유사 컨텐츠)를 지원하는 수많은 프레임워크를 제공하므로, 개바자는 큰 노력 없이도 애플리케이션에 쉽게 (MVC)구조를 추가할 수 있습니다.</p>
 
 <p>These frameworks include the likes of Backbone, Ember.js and AngularJS. Given the importance of avoiding "spaghetti" code, a term which describes code that is very difficult to read or maintain due to its lack of structure, it's imperative that the modern JavaScript developer understand what this pattern provides. This allows us to effectively appreciate what these frameworks enable us to do differently.</p>
+<p>이러한 프레임워크에는 Backbone, Ember.js, AngularJS 등이 포함됩니다. 구조적 결함 때문에 읽거나 유지하기가 어려운 코드를 설명하는 "스파게티" 코드를 피하는 것이 중요합니다. 따라서 현대의 JavaScript 개발자는 이 패턴이 제공하는 것들을 이해하는것이 중요합니다. 이를 통해 프레임워크가 제공할 수 있는 차이점이 무엇인지 효과적으로 인식하게 합니다.</p>
+
 <p>We know that MVC is composed of three core components:</p>
+<p>우리는 MVC가 세 가지 핵심 구성 요소로 구성된다는 것을 알고 있습니다.</p>
 
 <h3>Models</h3>
 
 <p>Models manage the data for an application. They are concerned with neither the user-interface nor presentation layers but instead represent unique forms of data that an application may require. When a model changes (e.g when it is updated), it will typically notify its observers (e.g views, a concept we will cover shortly) that a change has occurred so that they may react accordingly.</p>
+<p>Model 은 애플리케이션의 데이터를 관리합니다. 모델은 UI 나 presentation 레이어에 관계하지 않습니다. 대신에 애플리케이션이 요구할 수 있는 유일한 형태의 데이터를 나타냅니다. 모델이 변경되면(예: 업데이트 될 때) 일반적으로 관찰자(예: view, 곧 다룰 개념입니다)에게 변경 사항이 발생했음을 알리고, 그에 따라 반응할 수 있습니다.</p>
+
 <p>To understand models further, let us imagine we have a JavaScript photo gallery application. In a photo gallery, the concept of a photo would merit its own model as it represents a unique kind of domain-specific data. Such a model may contain related attributes such as a caption, image source and additional meta-data. A specific photo would be stored in an instance of a model and a model may also be reusable. Below we can see an example of a very simplistic model implemented using Backbone.</p>
+<p>Model 을 더 잘 이해하기 위해 JavaScript 포토 갤러리 애플리케이션을 가지고 생각해보겠습니다. 포토 갤러리에서 사진의 개념은 고유한 domain-specific 데이터를 나타내기 때문에, 자체 모델의 장점을 누릴 수 있습니다. 이러한 모델은 캡션, 이미지 소스, 추가 메타 데이터 등 관련 어트리뷰트를 포함할 수 있습니다. 특정 사진을 모델 인스턴스에 저장하고, 모델을 재사용 할 수도 있습니다. 아래는 Backbone을 사용하여 구현된 매우 단순한 모델의 예제 입니다.</p>
 
 <pre><code class="js">var Photo = Backbone.Model.extend({
 
@@ -4550,9 +4557,13 @@ Note: Although we may believe that simply caching our jQuery code may offer just
 </code></pre>
 
 <p>The built-in capabilities of models vary across frameworks, however it is quite common for them to support validation of attributes, where attributes represent the properties of the model, such as a model identifier. When using models in real-world applications we generally also desire model persistence. Persistence allows us to edit and update models with the knowledge that its most recent state will be saved in either: memory, in a user's localStorage data-store or synchronized with a database.</p>
+<p>모델의 기본 제공 기능은 프레임워크마다 다르지만, 어트리뷰트의 유효성 검증을 지원하는 것이 일반적입니다. 어트리뷰트는 모델 식별자와 같은 모델의 프로퍼티를 나타냅니다. 실제 애플리케이션에서 모델을 사용할 때 우리는 일반적으로, 모델의 지속성을 원합니다. Persistence 를 통해 우리는 가장 최근의 상태가 메모리, 유저의 localStorage data-store 또는 데이터베이스와 동기화 된 상태로 저장된다는 지식으로, 모델을 편집하고 업데이트 할 수 있습니다. fix013</p>
 <p>In addition, a model may also have multiple views observing it. If say, our photo model contained meta-data such as its location (longitude and latitude), friends that were present in the photo (a list of identifiers) and a list of tags, a developer may decide to provide a single view to display each of these three facets.</p>
+<p>게다가, 모델에는 모델을 관측하는 view가 있을 수 있습니다. 사진 모델의 위치(위도 및 경도), 사진에 있는 친구(식별자 목록), 태그 리스트 와 같은 메타 데이터가 포함되어 있는 경우, 개발자는 이 세가지를 각각 표시 할 단일 뷰를 제공하기로 결정할 수 있습니다.</p>
 <p>It is not uncommon for modern MVC/MV* frameworks to provide a means to group models together (e.g. in Backbone, these groups are referred to as "collections"). Managing models in groups allows us to write application logic based on notifications from the group should any model it contains be changed. This avoids the need to manually observe individual model instances.</p>
+<p>요즈음 MVC/MV* 프레임워크가 모델을 모델을 그룹화하는 수단을 제공하는 것은 드문 일이 아닙니다. (예를들면 Backbone에서는 이러한 그룹을 "collections" 이라고 합니다.) 그룹으로 모델을 관리하면, 어떠한 모델이 변경되었을 때, 그룹에 알림을 주는 형태의 애플리케이션 로직을 작성할 수 있습니다. 따라서, 각각의 모델 인스턴스를 수동으로 관찰할 필요가 없습니다.</p>
 <p>A sample grouping of models into a simplified Backbone collection can be seen below.</p>
+<p>아래는 모델을 단순화 하여 Backbone collection으로 그룹화하는 샘플입니다.</p>
 
 <pre><code class="js">var PhotoGallery = Backbone.Collection.extend({
 
@@ -4576,24 +4587,37 @@ Note: Although we may believe that simply caching our jQuery code may offer just
 </code></pre>
 
 <p>Older texts on MVC may also contain reference to a notion of models managing application <em>state</em>.In JavaScript applications <em>state</em> has a different connotation, typically referring to the current "state" i.e view or sub-view (with specific data) on a users screen at a fixed point. State is a topic which is regularly discussed when looking at Single-page applications, where the concept of state needs to be simulated.</p>
+<p>MVC의 오래된 텍스트들은 애플리케이션 <em>state</em>를 관리하는 모델 개념에 대한 참조를 포함할 수 있습니다. JavaScript applications <em>state</em> 는 고정된 지점에서 사용자 화면의 현재 "state", 즉 뷰 혹은 서브뷰(특정 데이터를 포함한)를 일반적으로 참조하는 다른 의미가 있습니다. State는 state 개념을 시뮬레이션해야 하는 SPA(single page applications)를 볼 때, 정기적으로 논의되는 항목입니다.</p>
 
 <p>So to summarize, models are primarily concerned with business data.</p>
+<p>요약하면, 모델은 주로 비즈니스 데이터와 관련이 있습니다.</p>
 
 <h3>Views</h3>
 <p>Views are a visual representation of models that present a filtered view of their current state. Whilst Smalltalk views are about painting and maintaining a bitmap, JavaScript views are about building and maintaining a DOM element.</p>
+<p>뷰는 현재 상태의 필터링 된 뷰를 표시하는 모델의 시각적 표현입니다. 스몰토크 뷰는 비트맵을 페인팅하고 유지 보수하는 반면, 자바스크립트 뷰는 DOM element를 작성하고 유지보수 합니다.</p>
 
 <p>A view typically observes a model and is notified when the model changes, allowing the view to update itself accordingly. Design pattern literature commonly refers to views as "dumb" given that their knowledge of models and controllers in an application is limited.</p>
+<p>뷰는 일반적으로 모델을 관측하고, 모델이 변경될 때 이를 알리며, 뷰가 스스로 업데이트 되도록 합니다. 디자인 패턴 문서는 일반적으로 애플리케이션의 모델 및 컨트롤러에 대한 지식이 제한되어 있으므로, 뷰를 "dumb"로 간주합니다.</p>
 
 <p>Users are able to interact with views and this includes the ability to read and edit (i.e get or set the attribute values in) models. As the view is the presentation layer, we generally present the ability to edit and update in a user-friendly fashion. For example, in the former photo gallery application we discussed earlier, model editing could be facilitated through an "edit' view where a user who has selected a specific photo could edit its meta-data.</p>
+<p>사용자는 뷰와 상호작용 할 수 있고, 여기에는 모델을 읽고 수정(어트리뷰트 값을 get or set)하는 기능이 포함됩니다. 뷰는 프리젠테이션 레이어이므로, 일반적으로 사용자 친화적인 방식으로 편집하고 업데이트 할 수 있는 기능을 제공합니다. 예를 들면 이전 포토 갤러리 애플리케이션에서, 모델 수정은 특정 사진을 선택한 사용자가 메타 데이터를 편집할 수 있는 "edit" 뷰를 통해 쉽게 수행할 수 있습니다.</p>
 
 <p>The actual task of updating the model falls to controllers (which we will be covering shortly).</p>
+<p>모델을 업데이트하는 실제 작업은 컨트롤러로 넘어갑니다 (곧 다루 겠습니다).</p>
 
 <p>Let's explore views a little further using a vanilla JavaScript sample implementation. Below we can see a function that creates a single Photo view, consuming both a model instance and a controller instance.</p>
+<p>vanilla JavaScript 샘플 구현을 사용하여, 뷰를 조금 더 살펴보겠습니다. 아래에는 모델 인스턴스와 컨트롤러 인스턴스를 모두 소비하는 하나의 포토 뷰를 만드는 함수가 있습니다.</p>
+
 <p>We define a <code>render()</code> utility within our view which is responsible for rendering the contents of the <code>photoModel</code> using a JavaScript templating engine (Underscore templating) and updating the contents of our view, referenced by <code>photoEl</code>.</p>
+<p>뷰 내의 <code>render()</code> 유틸리티는 JavaScript 템플릿 엔진(Underscore templating)을 사용하여 <code>photoModel</code>의 내용을 렌더링하고 <code>photoEl</code>이 참조하는 뷰의 내용을 업데이트하는 역할을합니다.</p>
 <p>The <code>photoModel</code> then adds our <code>render()</code> callback as one of its subscribers so that through the Observer pattern we can trigger the view to update when the model changes.</p>
+<p>그런 다음 <code>photModel</code>은 Observer 패턴을 통해 모델이 변경되면 뷰를 트리거 할 수 있도록 subscribers 중 하나 인 <code>render()</code> 콜백을 추가합니다.</p>
 
 <p>One may wonder where user-interaction comes into play here. When users click on any elements within the view, it's not the view's responsibility to know what to do next. It relies on a controller to make this decision for it. In our sample implementation, this is achieved by adding an event listener to <code>photoEl</code> which will delegate handling the click behavior back to the controller, passing the model information along with it in case it's needed.</p>
+<p>사용자-상호작용이 어디에서 수행되는지 궁금할 수 있습니다. 사용자가 뷰 내의 어떠한 elements를 클릭했을 때, 뷰는 다음에 어떠한 일이 수행될지는 뷰의 영역이 아닙니다. 이것을 결정하기 위하여 컨트롤러를 사용합니다. 샘플 구현에서, 이는 필요할 때는 대비해 모델 정보는 전달하면서, 클릭 동작을 컨트롤러에서 다시 처리하도록 위암하는, <code>photoEl</code>에 이벤트 리스너를 추가하여 구현합니다.</p>
+
 <p>The benefit of this architecture is that each component plays its own separate role in making the application function as needed.</p>
+<p>이 아키텍처의 이점은 각각의 컴포넌트가 필요에 따라 애플리케이션 함수를 작성하는데 있어 별도의 역할을 수행한다는 것입니다.</p>
 
 <pre><code class="js">var buildPhotoView = function ( photoModel, photoController ) {
 
@@ -4635,8 +4659,10 @@ Note: Although we may believe that simply caching our jQuery code may offer just
 
 <p><strong>Templating</strong></p>
 <p>In the context of JavaScript frameworks that support MVC/MV*, it is worth briefly discussing JavaScript templating and its relationship to views as we briefly touched upon it in the last section.</p>
+<p>MVC/MV*을 지원하는 JavaScript 프레임워크와 관련하여, 마지막 섹션에서 간략하게 언급 한대로 JavaScript 템플릿과 뷰와의 관계에 대해 간략하게 논의할 필요가 있습니다.</p>
 
 <p>It has long been considered (and proven) a performance bad practice to manually create large blocks of HTML markup in-memory through string concatenation. Developers doing so have fallen prey to inperformantly iterating through their data, wrapping it in nested divs and using outdated techniques such as <code>document.write</code> to inject the "template" into the DOM. As this typically means keeping scripted markup inline with our standard markup, it can quickly become both difficult to read and more importantly, maintain such disasters, especially when building non-trivially sized applications.</p>
+<p>문자 연결자를 통해 메모리에 대량의 HTML 마크업 블록을 수동으로 생성하는 것은, 오랫동안 성능이 좋지 않은 것으로 간주되어 왔습니다. 개발자는 데이터를 반복하여 중첩 된 div로 래핑하고, <code>document.write</code>와 같은 오래된 기술을 사용하여 DOM에 "template"을 삽입합니다. 이것은 일반적으로 표준 마크업과 함께 inline 마크업을 유지하는 것을 의미합니다. 그것은 특히, 작지 않은 크기의 애플리케이션의 재앙과 같은 유지보수시에, 읽기 어렵고 보다 중요한 것을 보다 빠르게 유지보수하도록 해줍니다.</p>
 
 <p>JavaScript templating solutions (such as Handlebars.js and Mustache) are often used to define templates for views as markup (either stored externally or within script tags with a custom type - e.g text/template) containing template variables. Variables may be delimitated using a variable syntax (e.g {{name}}) and frameworks are typically smart enough to accept data in a JSON form (which model instances can be converted to) such that we only need be concerned with maintaining clean models and clean templates. Most of the grunt work to do with population is taken care of by the framework itself. This has a large number of benefits, particularly when opting to store templates externally as this can give way to templates being dynamically loaded on an as-needed basis when it comes to building larger applications.</p>
 
